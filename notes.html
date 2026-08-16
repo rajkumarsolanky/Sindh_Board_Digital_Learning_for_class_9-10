@@ -6,112 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter-wise Notes - Sindh Board Digital Learning</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Global Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        :root {
-            --primary-color: #00664f;
-            --primary-dark: #004d3b;
-            --primary-light: #e6f4f0;
-            --accent-glow: #10b981;
-            --secondary-color: #f59e0b;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --bg-light: #f8fafc;
-            --white: #ffffff;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        /* Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .logo img {
-            height: 38px;
-            width: auto;
-            border-radius: 6px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 22px;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 15px;
-            padding: 6px 0;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        /* Uiverse Button */
+        /* CTA Button Shine Effect */
         .uiverse-btn-shine {
             position: relative;
             padding: 10px 22px;
@@ -128,6 +31,7 @@
             align-items: center;
             gap: 8px;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .uiverse-btn-shine:hover {
@@ -135,7 +39,7 @@
             box-shadow: 0 6px 20px rgba(0, 102, 79, 0.4);
         }
 
-        /* Page Banner */
+        /* Page Banner Header */
         .page-header {
             background: linear-gradient(135deg, #005642 0%, #007a5e 100%);
             color: var(--white);
@@ -158,7 +62,7 @@
             margin: auto;
         }
 
-        /* Search & Filters */
+        /* Search & Class Filter Section */
         .filter-section {
             padding: 35px 0 20px 0;
         }
@@ -227,7 +131,7 @@
             color: var(--text-muted);
         }
 
-        /* Subjects Grid */
+        /* Subjects Grid Layout */
         .subjects-section {
             padding: 25px 0 70px 0;
         }
@@ -359,15 +263,8 @@
         }
 
         @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-header {
@@ -379,10 +276,7 @@
             margin-bottom: 20px;
         }
 
-        .modal-header h2 {
-            font-size: 22px;
-            color: var(--primary-color);
-        }
+        .modal-header h2 { font-size: 22px; color: var(--primary-color); }
 
         .modal-close {
             background: #f1f5f9;
@@ -398,10 +292,7 @@
             transition: 0.2s;
         }
 
-        .modal-close:hover {
-            background: #fee2e2;
-            color: #ef4444;
-        }
+        .modal-close:hover { background: #fee2e2; color: #ef4444; }
 
         .chapter-item {
             display: flex;
@@ -415,26 +306,12 @@
             transition: 0.2s;
         }
 
-        .chapter-item:hover {
-            background: #f0fdf4;
-            border-color: #86efac;
-        }
+        .chapter-item:hover { background: #f0fdf4; border-color: #86efac; }
 
-        .chapter-title {
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--text-dark);
-        }
+        .chapter-title { font-weight: 600; font-size: 15px; color: var(--text-dark); }
+        .chapter-desc { font-size: 12px; color: var(--text-muted); }
 
-        .chapter-desc {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .chapter-actions {
-            display: flex;
-            gap: 8px;
-        }
+        .chapter-actions { display: flex; gap: 8px; }
 
         .btn-ch-action {
             padding: 6px 14px;
@@ -449,14 +326,8 @@
             transition: 0.2s;
         }
 
-        .btn-ch-download {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .btn-ch-download:hover {
-            background: var(--primary-dark);
-        }
+        .btn-ch-download { background: var(--primary-color); color: var(--white); }
+        .btn-ch-download:hover { background: var(--primary-dark); }
 
         /* Footer */
         .footer {
@@ -466,37 +337,21 @@
             text-align: center;
         }
 
-        .footer p {
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .filter-wrapper {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .search-box {
-                width: 100%;
-            }
-        }
+        .footer p { font-size: 14px; }
     </style>
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    <!-- ==================== HEADER & NAVIGATION ==================== -->
     <header class="navbar">
         <div class="container">
-            <a href="sindh_board_digital_learning_platform.html" class="logo">
-                <i class="fa-solid fa-graduation-cap" style="color: #00664f;"></i>
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
                 <span>Sindh Board Digital</span>
             </a>
 
+            <!-- Desktop Nav Links -->
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="features.html">Features</a></li>
@@ -506,23 +361,41 @@
                 <li><a href="brain_gym.html">Brain Gym</a></li>
             </ul>
 
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Download APK Button -->
             <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
-                class="uiverse-btn-shine" onclick="alert('Download Sindh Board Digital App APK')">
+                class="uiverse-btn-shine" download
+                style="padding: 8px 16px; font-size: 13px; border-radius: 20px;">
                 <i class="fa-brands fa-android"></i> Get App
             </a>
         </div>
     </header>
 
-    <!-- Page Header -->
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="notes.html" class="active">Notes</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+            <li><a href="past_papers.html">Past Papers</a></li>
+            <li><a href="brain_gym.html">Brain Gym</a></li>
+        </ul>
+    </div>
+
+    <!-- ==================== PAGE BANNER ==================== -->
     <section class="page-header">
         <div class="container">
             <h1>Sindh Board Chapter-wise Notes</h1>
-            <p>Comprehensive, syllabus-aligned study material with solved numericals, MCQs, and question answers for
-                Matric (Class 9th & 10th).</p>
+            <p>Comprehensive, syllabus-aligned study material with solved numericals, MCQs, and question answers for Matric (Class 9th & 10th).</p>
         </div>
     </section>
 
-    <!-- Filter & Search -->
+    <!-- ==================== FILTER & SEARCH BAR ==================== -->
     <section class="filter-section">
         <div class="container">
             <div class="filter-wrapper">
@@ -541,112 +414,112 @@
         </div>
     </section>
 
-    <!-- Subjects Grid -->
+    <!-- ==================== SUBJECTS GRID ==================== -->
     <section class="subjects-section">
         <div class="container">
             <div class="subjects-grid" id="subjectsGrid">
 
-                <!-- Physics -->
+                <!-- Subject 1: Physics -->
                 <div class="subject-card" data-class="9th 10th"
                     onclick="openSubjectModal('Physics', 9, ['Physical Quantities & Measurement', 'Kinematics', 'Dynamics', 'Turning Effect of Forces', 'Forces and Matter', 'Gravitation', 'Properties of Matter', 'Thermal Properties of Matter', 'Transfer of Heat'])">
                     <div class="subject-icon-wrap">
                         <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_physics.png" alt="Physics Icon">
                     </div>
                     <h3>Physics</h3>
-                    <p>Concepts, Formulas, Derivations & Solved Numericals</p>
+                    <p>Complete Class 9th & 10th Theory, Solved Numericals & MCQs</p>
                     <span class="chapter-count-badge">9 Chapters Available</span>
                     <button class="btn-view-notes">
                         <i class="fa-regular fa-file-lines"></i> Open Notes
                     </button>
                 </div>
 
-                <!-- Chemistry -->
+                <!-- Subject 2: Chemistry -->
                 <div class="subject-card" data-class="9th 10th"
                     onclick="openSubjectModal('Chemistry', 8, ['Fundamentals of Chemistry', 'Structure of Atoms', 'Periodic Table & Periodicity', 'Structure of Molecules', 'Physical States of Matter', 'Solutions', 'Electrochemistry', 'Chemical Reactivity'])">
                     <div class="subject-icon-wrap">
                         <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_chemistry.png" alt="Chemistry Icon">
                     </div>
                     <h3>Chemistry</h3>
-                    <p>Reactions, Organic/Inorganic, Periodic Table & Labs</p>
+                    <p>Chemical Reactions, Periodic Table, Formulas & Equations</p>
                     <span class="chapter-count-badge">8 Chapters Available</span>
                     <button class="btn-view-notes">
                         <i class="fa-regular fa-file-lines"></i> Open Notes
                     </button>
                 </div>
 
-                <!-- Biology -->
+                <!-- Subject 3: Biology -->
                 <div class="subject-card" data-class="9th 10th"
-                    onclick="openSubjectModal('Biology', 9, ['Introduction to Biology', 'Solving a Biological Problem', 'Biodiversity', 'Cells and Tissues', 'Cell Cycle', 'Enzymes', 'Bioenergetics', 'Nutrition', 'Transport'])">
+                    onclick="openSubjectModal('Biology', 9, ['Introduction to Biology', 'Solving a Biological Problem', 'Biodiversity', 'Cells and Tissues', 'Cell Cycle (Mitosis & Meiosis)', 'Enzymes', 'Bioenergetics', 'Nutrition', 'Transport in Living Organisms'])">
                     <div class="subject-icon-wrap">
                         <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_biology.png" alt="Biology Icon">
                     </div>
                     <h3>Biology</h3>
-                    <p>Cell Biology, Human Physiology, Genetics & Ecology</p>
+                    <p>Cell Biology, Human Physiology, Genetics & Ecology Diagrams</p>
                     <span class="chapter-count-badge">9 Chapters Available</span>
                     <button class="btn-view-notes">
                         <i class="fa-regular fa-file-lines"></i> Open Notes
                     </button>
                 </div>
 
-                <!-- Mathematics -->
+                <!-- Subject 4: Mathematics -->
                 <div class="subject-card" data-class="9th 10th"
-                    onclick="openSubjectModal('Mathematics', 12, ['Real and Complex Numbers', 'Logarithms', 'Algebraic Expressions & Formulas', 'Factorization', 'Algebraic Manipulation', 'Linear Equations & Inequalities', 'Linear Graphs & Applications', 'Geometry & Theorems'])">
+                    onclick="openSubjectModal('Mathematics', 10, ['Sets and Functions', 'Real and Complex Numbers', 'Logarithms', 'Algebraic Expressions & Formulas', 'Factorization & HCF/LCM', 'Matrices & Determinants', 'Linear Equations & Inequalities', 'Trigonometry', 'Geometry Theorems', 'Practical Geometry'])">
                     <div class="subject-icon-wrap">
                         <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_math.png" alt="Math Icon">
                     </div>
                     <h3>Mathematics</h3>
-                    <p>Step-by-step exercise solutions, formulas & theorem proofs</p>
-                    <span class="chapter-count-badge">12 Units Available</span>
+                    <p>Step-by-step Solved Exercises, Theorems & Geometry Proofs</p>
+                    <span class="chapter-count-badge">10 Chapters Available</span>
                     <button class="btn-view-notes">
                         <i class="fa-regular fa-file-lines"></i> Open Notes
                     </button>
                 </div>
 
-                <!-- Computer Science -->
+                <!-- Subject 5: Computer Science -->
                 <div class="subject-card" data-class="9th 10th"
-                    onclick="openSubjectModal('Computer Science', 7, ['Fundamentals of Computer', 'Fundamentals of Operating System', 'Office Automation', 'Data Communication & Networks', 'Computer Security and Ethics', 'Web Development (HTML/CSS)', 'Database Fundamentals'])">
+                    onclick="openSubjectModal('Computer Science', 7, ['Fundamentals of Computer', 'Fundamentals of Operating System', 'Office Automation', 'Data Communication & Computer Networks', 'Computer Security & Ethics', 'Web Development (HTML/CSS)', 'Introduction to Programming in C'])">
                     <div class="subject-icon-wrap">
                         <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_computer-science.png" alt="Computer Science Icon">
                     </div>
                     <h3>Computer Science</h3>
-                    <p>Programming concepts, Networking, Hardware & Web Design</p>
+                    <p>Programming Basics, Hardware, OS, Algorithms & HTML Coding</p>
                     <span class="chapter-count-badge">7 Chapters Available</span>
                     <button class="btn-view-notes">
                         <i class="fa-regular fa-file-lines"></i> Open Notes
                     </button>
                 </div>
 
-                <!-- English -->
+                <!-- Subject 6: English -->
                 <div class="subject-card" data-class="9th 10th"
-                    onclick="openSubjectModal('English', 8, ['The Last Sermon of the Prophet (PBUH)', 'Shah Abdul Latif Bhittai', 'The Neem Tree (Poem)', 'Daffodils (Poem)', 'Grammar & Composition', 'Formal Letters & Applications', 'Essays & Paragraphs', 'Comprehension Passages'])">
+                    onclick="openSubjectModal('English Compulsory', 8, ['The Last Sermon of Holy Prophet (PBUH)', 'Shah Abdul Latif Bhittai', 'The Neem Tree (Poetry)', 'Moen-jo-Daro', 'Health is Wealth', 'Grammar & Direct/Indirect Speech', 'Essay & Letter Writing', 'Active and Passive Voice'])">
                     <div class="subject-icon-wrap">
                         <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_english.png" alt="English Icon">
                     </div>
                     <h3>English</h3>
-                    <p>Stories, Poems, Essays, Letters, Grammar & Summaries</p>
+                    <p>Poetry Summaries, Prose Explanations, Grammar & Essays</p>
                     <span class="chapter-count-badge">8 Units Available</span>
                     <button class="btn-view-notes">
                         <i class="fa-regular fa-file-lines"></i> Open Notes
                     </button>
                 </div>
 
-                <!-- Pakistan Studies -->
+                <!-- Subject 7: Pakistan Studies -->
                 <div class="subject-card" data-class="9th 10th"
-                    onclick="openSubjectModal('Pakistan Studies', 6, ['Ideological Basis of Pakistan', 'Making of Pakistan', 'Constitutional Development in Pakistan', 'Land and Climate of Pakistan', 'Resources of Pakistan', 'Industrial Development'])">
+                    onclick="openSubjectModal('Pakistan Studies', 6, ['Ideological Basis of Pakistan', 'Making of Pakistan (1857-1947)', 'Land & Climate of Pakistan', 'History of Sindh & Cultural Heritage', 'Constitution & Governance', 'Foreign Policy & International Relations'])">
                     <div class="subject-icon-wrap">
-                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_pakstudies.png" alt="Pak Studies Icon">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_pakistan-studies.png" alt="Pak Studies Icon">
                     </div>
                     <h3>Pakistan Studies</h3>
-                    <p>History, Geography, Constitution, Culture & Economy</p>
+                    <p>History of Pakistan, Ideology, Geography & Constitution</p>
                     <span class="chapter-count-badge">6 Chapters Available</span>
                     <button class="btn-view-notes">
                         <i class="fa-regular fa-file-lines"></i> Open Notes
                     </button>
                 </div>
 
-                <!-- Islamiat -->
-                <div class="subject-card" data-class="9th"
-                    onclick="openSubjectModal('Islamiat Compulsory', 5, ['Surah Al-Anfal (Verses & Translation)', 'Hadith Nabawi (PBUH)', 'Pillars of Islam (Tauheed, Namaz, Roza, Zakat, Hajj)', 'Uswah-e-Hasana (Life of Prophet PBUH)', 'Islamic Ethics & Morals'])">
+                <!-- Subject 8: Islamiat -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('Islamiat Lazmi', 5, ['Surah Al-Anfal (Verses 1-75)', 'Surah Al-Ahzab', 'Selected Ahadith-e-Nabawi', 'Pillars of Islam (Namaz, Roza, Zakat, Hajj)', 'Seerat-un-Nabi & Ethics'])">
                     <div class="subject-icon-wrap">
                         <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_islamiat.png" alt="Islamiat Icon">
                     </div>
@@ -658,7 +531,7 @@
                     </button>
                 </div>
 
-                <!-- Sindhi -->
+                <!-- Subject 9: Sindhi -->
                 <div class="subject-card" data-class="9th 10th"
                     onclick="openSubjectModal('Sindhi Salees', 8, ['Hamd & Naat (Sindhi)', 'Sachal Sarmast', 'Sindhi Culture & Heritage', 'Sindhi Grammar & Qawaid', 'Essays & Mazmoon Nigari', 'Sindhi Short Stories', 'Comprehension & Vocabulary', 'Sindhi Literature'])">
                     <div class="subject-icon-wrap">
@@ -672,7 +545,7 @@
                     </button>
                 </div>
 
-                <!-- Urdu -->
+                <!-- Subject 10: Urdu -->
                 <div class="subject-card" data-class="9th 10th"
                     onclick="openSubjectModal('Urdu Lazmi', 8, ['Hamd & Naat (Urdu)', 'Mirza Ghalib ke Khutoot', 'Allama Iqbal Nazmein', 'Qawaid-o-Insha (Grammar)', 'Khatoot & Darkhwast', 'Mazmoon Nigari (Essays)', 'Khulasa & Tashreeh', 'Sabq & Afsanay'])">
                     <div class="subject-icon-wrap">
@@ -685,21 +558,19 @@
                         <i class="fa-regular fa-file-lines"></i> Open Notes
                     </button>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Modal for Chapters -->
+    <!-- ==================== CHAPTER DETAILS MODAL ==================== -->
     <div class="chapter-list-modal" id="subjectModal">
         <div class="modal-card">
             <div class="modal-header">
                 <div>
                     <h2 id="modalSubjectTitle">Physics Notes</h2>
-                    <p style="font-size: 13px; color: #64748b;" id="modalSubjectSubtitle">Class 9th & 10th Sindh
-                        Textbook Board</p>
+                    <p style="font-size: 13px; color: #64748b;" id="modalSubjectSubtitle">Class 9th & 10th Sindh Textbook Board</p>
                 </div>
-                <button class="modal-close" onclick="closeSubjectModal()">
+                <button class="modal-close" onclick="closeSubjectModal()" aria-label="Close Modal">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -710,15 +581,18 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 Sindh Board Digital Learning Platform. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for Interactivity -->
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
     <script>
+        /**
+         * Filter subjects by class tab (All, 9th, 10th)
+         */
         function filterClass(className, btn) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -734,6 +608,9 @@
             });
         }
 
+        /**
+         * Real-time search filter for subjects and topics
+         */
         function searchSubjects() {
             const input = document.getElementById('subjectSearch').value.toLowerCase();
             const cards = document.querySelectorAll('.subject-card');
@@ -749,6 +626,9 @@
             });
         }
 
+        /**
+         * Open dynamic chapters modal for selected subject
+         */
         function openSubjectModal(subjectName, count, chapters) {
             document.getElementById('modalSubjectTitle').innerText = subjectName + " Notes";
             document.getElementById('modalSubjectSubtitle').innerText = count + " Chapters • Sindh Textbook Board Syllabus";
@@ -776,10 +656,16 @@
             document.getElementById('subjectModal').style.display = 'flex';
         }
 
+        /**
+         * Close subject chapters modal
+         */
         function closeSubjectModal() {
             document.getElementById('subjectModal').style.display = 'none';
         }
 
+        /**
+         * Chapter PDF prompt
+         */
         function downloadChapter(subject, chNum) {
             alert(`📥 Downloading ${subject} Chapter ${chNum} PDF Notes...\n\nTo access all complete chapter-wise solved notes offline without internet, download the official Sindh Board App APK!`);
         }
@@ -787,9 +673,31 @@
         // Close modal on click outside
         window.onclick = function (event) {
             const modal = document.getElementById('subjectModal');
-            if (event.target == modal) {
+            if (event.target === modal) {
                 closeSubjectModal();
             }
+        };
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', function () {
+                mobileMenu.classList.toggle('active');
+                this.innerHTML = mobileMenu.classList.contains('active')
+                    ? '<i class="fa-solid fa-times"></i>'
+                    : '<i class="fa-solid fa-bars"></i>';
+            });
+
+            // Close menu when a link is clicked
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                });
+            });
         }
     </script>
 </body>

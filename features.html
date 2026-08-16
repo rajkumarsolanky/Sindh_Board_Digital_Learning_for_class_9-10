@@ -6,117 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features - Sindh Board Digital Learning Platform</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Global Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        :root {
-            --primary-color: #00664f;
-            --primary-dark: #004d3b;
-            --primary-light: #e6f4f0;
-            --accent-glow: #10b981;
-            --accent-gold: #f59e0b;
-            --cyber-blue: #0284c7;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --bg-light: #f8fafc;
-            --white: #ffffff;
-            --card-shadow: 0 10px 30px rgba(0, 102, 79, 0.08);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 92%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        /* 1. Navigation Bar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .logo i {
-            font-size: 26px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 22px;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 15px;
-            padding: 6px 0;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
+        /* CTA Button Shine Effect */
         .uiverse-btn-shine {
             position: relative;
             padding: 10px 22px;
@@ -140,7 +38,7 @@
             box-shadow: 0 6px 20px rgba(0, 102, 79, 0.4);
         }
 
-        /* 2. Redesigned Hero Header */
+        /* Features Hero Header */
         .features-hero {
             background: linear-gradient(135deg, #064e3b 0%, #00664f 50%, #0f172a 100%);
             color: var(--white);
@@ -197,7 +95,7 @@
             margin: 0 auto 30px auto;
         }
 
-        /* 3. Core Features Grid (6 Power Cards) */
+        /* Core Features Grid Section */
         .features-grid-sec {
             padding: 55px 0 40px 0;
         }
@@ -320,7 +218,7 @@
             font-size: 14px;
         }
 
-        /* 4. Interactive App Screens Showcase */
+        /* App Screens Showcase */
         .screens-showcase-sec {
             padding: 50px 0 70px 0;
             background: #ffffff;
@@ -380,7 +278,7 @@
             color: var(--text-muted);
         }
 
-        /* 5. Comparison Table */
+        /* Comparison Table Section */
         .comparison-sec {
             padding: 60px 0 80px 0;
         }
@@ -433,7 +331,7 @@
             background: #eef2ff !important;
         }
 
-        /* 6. CTA Download Box */
+        /* Call to Action Banner */
         .cta-banner-sec {
             padding: 0 0 70px 0;
         }
@@ -488,50 +386,27 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* 7. Footer */
+        /* Footer */
         .footer {
             background-color: #0f172a;
             color: #94a3b8;
             padding: 40px 0 20px 0;
             text-align: center;
         }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .features-hero h1 {
-                font-size: 30px;
-            }
-
-            .power-cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .comparison-card {
-                padding: 20px;
-                overflow-x: auto;
-            }
-
-            .uiverse-cta-box {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- 1. NAVIGATION BAR -->
+    <!-- ==================== HEADER & NAVIGATION ==================== -->
     <header class="navbar">
         <div class="container">
-            <a href="sindh_board_digital_learning_platform.html" class="logo">
-                <i class="fa-solid fa-graduation-cap" style="color: #00664f;"></i>
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
                 <span>Sindh Board Digital</span>
             </a>
 
+            <!-- Desktop Nav Links -->
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="features.html" class="active">Features</a></li>
@@ -541,14 +416,33 @@
                 <li><a href="brain_gym.html">Brain Gym</a></li>
             </ul>
 
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Download APK Button -->
             <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
-                class="uiverse-btn-shine" onclick="alert('Download Sindh Board Digital App APK')">
+                class="uiverse-btn-shine" download
+                style="padding: 8px 16px; font-size: 13px; border-radius: 20px;">
                 <i class="fa-brands fa-android"></i> Get App
             </a>
         </div>
     </header>
 
-    <!-- 2. REDESIGNED HERO SECTION -->
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html" class="active">Features</a></li>
+            <li><a href="notes.html">Notes</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+            <li><a href="past_papers.html">Past Papers</a></li>
+            <li><a href="brain_gym.html">Brain Gym</a></li>
+        </ul>
+    </div>
+
+    <!-- ==================== FEATURES HERO BANNER ==================== -->
     <section class="features-hero">
         <div class="container">
             <div class="hero-pill-badge">
@@ -574,25 +468,23 @@
         </div>
     </section>
 
-    <!-- 3. POWER FEATURES GRID (6 Pillars) -->
+    <!-- ==================== 6 POWER FEATURES GRID ==================== -->
     <section class="features-grid-sec" id="powerFeatures">
         <div class="container">
             <div class="section-center-heading">
                 <h2>Everything Sindh Students Need to Excel</h2>
-                <p>Curated by experienced board educators to guarantee 100% preparation for annual matric examinations.
-                </p>
+                <p>Curated by experienced board educators to guarantee 100% preparation for annual matric examinations.</p>
             </div>
 
             <div class="power-cards-grid">
 
-                <!-- 1. Chapter Notes -->
+                <!-- Feature 1: Chapter Notes -->
                 <div class="power-feature-card">
                     <div class="card-icon-bubble">
                         <i class="fa-solid fa-book-bookmark"></i>
                     </div>
                     <h3>Chapter-wise Syllabus Notes</h3>
-                    <p>Comprehensive study material for all 10 subjects with step-by-step solved numericals,
-                        derivations, and question banks.</p>
+                    <p>Comprehensive study material for all 10 subjects with step-by-step solved numericals, derivations, and question banks.</p>
                     <ul class="feature-check-list">
                         <li><i class="fa-solid fa-circle-check"></i> Aligned with latest Sindh Textbook Board</li>
                         <li><i class="fa-solid fa-circle-check"></i> Available in Urdu, Sindhi & English</li>
@@ -600,14 +492,13 @@
                     </ul>
                 </div>
 
-                <!-- 2. Interactive Timed Quizzes -->
+                <!-- Feature 2: Interactive Timed Quizzes -->
                 <div class="power-feature-card">
                     <div class="card-icon-bubble">
                         <i class="fa-solid fa-stopwatch"></i>
                     </div>
                     <h3>Interactive Timed MCQ Arena</h3>
-                    <p>Practice board-pattern MCQs with live 15-second timer countdown, instant conceptual feedback, and
-                        automated board grading.</p>
+                    <p>Practice board-pattern MCQs with live 15-second timer countdown, instant conceptual feedback, and automated board grading.</p>
                     <ul class="feature-check-list">
                         <li><i class="fa-solid fa-circle-check"></i> Instant AI scoring and explanation</li>
                         <li><i class="fa-solid fa-circle-check"></i> Live answer streaks and combo XP points</li>
@@ -615,14 +506,13 @@
                     </ul>
                 </div>
 
-                <!-- 3. Past Papers Repository -->
+                <!-- Feature 3: Past Papers Repository -->
                 <div class="power-feature-card">
                     <div class="card-icon-bubble">
                         <i class="fa-solid fa-file-signature"></i>
                     </div>
                     <h3>10+ Years Solved Past Papers</h3>
-                    <p>Access over a decade of official solved board papers for Karachi, Hyderabad, Sukkur, Larkana, and
-                        Mirpurkhas educational boards.</p>
+                    <p>Access over a decade of official solved board papers for Karachi, Hyderabad, Sukkur, Larkana, and Mirpurkhas educational boards.</p>
                     <ul class="feature-check-list">
                         <li><i class="fa-solid fa-circle-check"></i> Solved Section A (MCQs), B & C</li>
                         <li><i class="fa-solid fa-circle-check"></i> High-frequency repeated questions marked</li>
@@ -630,14 +520,13 @@
                     </ul>
                 </div>
 
-                <!-- 4. Brain Gym -->
+                <!-- Feature 4: Brain Gym Cognitive Drills -->
                 <div class="power-feature-card">
                     <div class="card-icon-bubble">
                         <i class="fa-solid fa-brain"></i>
                     </div>
                     <h3>Brain Gym Cognitive Drills</h3>
-                    <p>Gamified memory matrix challenges, rapid mental math drills, and daily study streaks to sharpen
-                        focus and formula recall.</p>
+                    <p>Gamified memory matrix challenges, rapid mental math drills, and daily study streaks to sharpen focus and formula recall.</p>
                     <ul class="feature-check-list">
                         <li><i class="fa-solid fa-circle-check"></i> Interactive memory card match game</li>
                         <li><i class="fa-solid fa-circle-check"></i> Rapid mental math speed calculations</li>
@@ -645,14 +534,13 @@
                     </ul>
                 </div>
 
-                <!-- 5. Offline PDF Mode -->
+                <!-- Feature 5: 100% Offline Study Mode -->
                 <div class="power-feature-card">
                     <div class="card-icon-bubble">
                         <i class="fa-solid fa-cloud-arrow-down"></i>
                     </div>
                     <h3>100% Offline Study Mode</h3>
-                    <p>Download your notes, model papers, and solved exercises once, then study freely without needing
-                        internet connection or mobile data.</p>
+                    <p>Download your notes, model papers, and solved exercises once, then study freely without needing internet connection or mobile data.</p>
                     <ul class="feature-check-list">
                         <li><i class="fa-solid fa-circle-check"></i> Zero data consumption during study</li>
                         <li><i class="fa-solid fa-circle-check"></i> Built-in smooth PDF viewer</li>
@@ -660,14 +548,13 @@
                     </ul>
                 </div>
 
-                <!-- 6. Performance Analytics -->
+                <!-- Feature 6: Smart Progress & Rank Tracker -->
                 <div class="power-feature-card">
                     <div class="card-icon-bubble">
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
                     <h3>Smart Progress & Rank Tracker</h3>
-                    <p>Monitor your accuracy rate, topic weaknesses, completed chapters, and projected board examination
-                        grade in real-time.</p>
+                    <p>Monitor your accuracy rate, topic weaknesses, completed chapters, and projected board examination grade in real-time.</p>
                     <ul class="feature-check-list">
                         <li><i class="fa-solid fa-circle-check"></i> Grade A-1 readiness percentage</li>
                         <li><i class="fa-solid fa-circle-check"></i> Daily study time & streak counter</li>
@@ -679,7 +566,7 @@
         </div>
     </section>
 
-    <!-- 4. APP SCREENS SHOWCASE (Using Local Screenshots) -->
+    <!-- ==================== APP SCREENS SHOWCASE ==================== -->
     <section class="screens-showcase-sec">
         <div class="container">
             <div class="section-center-heading">
@@ -688,7 +575,7 @@
             </div>
 
             <div class="screens-gallery-grid">
-                <!-- Screen 1 -->
+                <!-- Screen 1: Home Dashboard -->
                 <div class="screen-mockup-card">
                     <div class="screen-img-wrap">
                         <img src="screenshots/APP Design OF FYP 1_page-0001.jpg" alt="Home Dashboard Screen"
@@ -698,7 +585,7 @@
                     <p>Quick access to subjects, daily goals & announcements</p>
                 </div>
 
-                <!-- Screen 2 -->
+                <!-- Screen 2: Quiz Arena -->
                 <div class="screen-mockup-card">
                     <div class="screen-img-wrap">
                         <img src="screenshots/APP Design OF FYP 1_page-0002.jpg" alt="Quiz Arena Screen"
@@ -708,7 +595,7 @@
                     <p>Live timed MCQs with step-by-step solutions</p>
                 </div>
 
-                <!-- Screen 3 -->
+                <!-- Screen 3: Past Papers -->
                 <div class="screen-mockup-card">
                     <div class="screen-img-wrap">
                         <img src="screenshots/APP Design OF FYP 1_page-0003.jpg" alt="Past Papers Repository Screen"
@@ -721,7 +608,7 @@
         </div>
     </section>
 
-    <!-- 5. COMPARISON TABLE -->
+    <!-- ==================== COMPARISON TABLE ==================== -->
     <section class="comparison-sec">
         <div class="container">
             <div class="comparison-card">
@@ -735,8 +622,7 @@
                         <tr>
                             <th>Key Feature</th>
                             <th>Traditional Paper Guides</th>
-                            <th class="app-highlight-th"><i class="fa-solid fa-mobile-screen"></i> Sindh Board Digital
-                            </th>
+                            <th class="app-highlight-th"><i class="fa-solid fa-mobile-screen"></i> Sindh Board Digital</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -776,30 +662,69 @@
         </div>
     </section>
 
-    <!-- 6. CTA BANNER -->
+    <!-- ==================== CTA BANNER ==================== -->
     <section class="cta-banner-sec">
         <div class="container">
             <div class="uiverse-cta-box">
                 <div class="cta-left-text">
                     <h2>Start Your Exam Preparation Today</h2>
-                    <p>Download the official Android APK and join thousands of Sindh Board students achieving Grade A-1
-                        in Matric.</p>
+                    <p>Download the official Android APK and join thousands of Sindh Board students achieving Grade A-1 in Matric.</p>
                 </div>
 
                 <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
-                    class="btn-cta-white" onclick="alert('Starting Sindh Board Digital Learning App APK Download...')">
+                    class="btn-cta-white" download>
                     <i class="fa-brands fa-android"></i> Download APK (Free)
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 7. FOOTER -->
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 Sindh Board Digital Learning Platform. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', function () {
+                const isActive = mobileMenu.classList.contains('active');
+                if (isActive) {
+                    mobileMenu.classList.add('closing');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('active', 'closing');
+                        this.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                    }, 300);
+                } else {
+                    mobileMenu.classList.add('active');
+                    this.innerHTML = '<i class="fa-solid fa-times"></i>';
+                }
+            });
+
+            // Close menu when a link is clicked
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                });
+            });
+
+            // Close menu on Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                }
+            });
+        }
+    </script>
 
 </body>
 

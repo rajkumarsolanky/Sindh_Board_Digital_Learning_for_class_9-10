@@ -5,120 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brain Gym & Memory Arena - Sindh Board Digital Learning</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        :root {
-            --primary-color: #00664f;
-            --primary-dark: #004d3b;
-            --primary-light: #e6f4f0;
-            --cyber-purple: #6366f1;
-            --cyber-purple-dark: #4338ca;
-            --cyber-violet: #8b5cf6;
-            --accent-glow: #10b981;
-            --accent-gold: #f59e0b;
-            --accent-red: #ef4444;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --bg-light: #f8fafc;
-            --white: #ffffff;
-            --card-shadow: 0 10px 30px rgba(99, 102, 241, 0.08);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 92%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        /* 1. Navigation Bar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .logo i {
-            font-size: 26px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 22px;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 15px;
-            padding: 6px 0;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
         .uiverse-btn-shine {
             position: relative;
             padding: 10px 22px;
@@ -718,43 +610,20 @@
             padding: 40px 0 20px 0;
             text-align: center;
         }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .brain-hero h1 {
-                font-size: 30px;
-            }
-
-            .cards-matrix-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-            }
-
-            .matrix-card {
-                height: 80px;
-                font-size: 26px;
-            }
-
-            .math-equation-text {
-                font-size: 32px;
-            }
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- 1. NAVIGATION BAR -->
+    <!-- ==================== HEADER & NAVIGATION ==================== -->
     <header class="navbar">
         <div class="container">
-            <a href="sindh_board_digital_learning_platform.html" class="logo">
-                <i class="fa-solid fa-graduation-cap" style="color: #00664f;"></i>
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
                 <span>Sindh Board Digital</span>
             </a>
 
+            <!-- Desktop Nav Links -->
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="features.html">Features</a></li>
@@ -764,15 +633,33 @@
                 <li><a href="brain_gym.html" class="active">Brain Gym</a></li>
             </ul>
 
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Download APK Button -->
             <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
-                class="uiverse-btn-shine"
-                onclick="alert('Download Sindh Board Digital App APK for Daily Offline Brain Gym Drills!')">
+                class="uiverse-btn-shine" download
+                style="padding: 8px 16px; font-size: 13px; border-radius: 20px;">
                 <i class="fa-brands fa-android"></i> Get App
             </a>
         </div>
     </header>
 
-    <!-- 2. REDESIGNED CYBER GAMING HERO -->
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="notes.html">Notes</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+            <li><a href="past_papers.html">Past Papers</a></li>
+            <li><a href="brain_gym.html" class="active">Brain Gym</a></li>
+        </ul>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
     <section class="brain-hero">
         <div class="container">
             <div class="hero-layout">
@@ -1280,6 +1167,49 @@
 
         // Initialize Memory Matrix on load
         initMemoryGame();
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                const isActive = mobileMenu.classList.contains('active');
+                if (isActive) {
+                    mobileMenu.classList.add('closing');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('active', 'closing');
+                        this.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                    }, 300);
+                } else {
+                    mobileMenu.classList.add('active');
+                    this.innerHTML = '<i class="fa-solid fa-times"></i>';
+                }
+            });
+
+            // Close menu when a link is clicked
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('closing');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('active', 'closing');
+                        mobileMenuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                    }, 300);
+                });
+            });
+
+            // Close menu on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.add('closing');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('active', 'closing');
+                        mobileMenuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                    }, 300);
+                }
+            });
+        }
     </script>
 </body>
 
