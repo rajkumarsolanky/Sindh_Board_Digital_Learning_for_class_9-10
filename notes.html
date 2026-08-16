@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter-wise Notes - Sindh Board Digital Learning</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #00664f;
+            --primary-dark: #004d3b;
+            --primary-light: #e6f4f0;
+            --accent-glow: #10b981;
+            --secondary-color: #f59e0b;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo img {
+            height: 38px;
+            width: auto;
+            border-radius: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            padding: 6px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Uiverse Button */
+        .uiverse-btn-shine {
+            position: relative;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 102, 79, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .uiverse-btn-shine:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 79, 0.4);
+        }
+
+        /* Page Banner */
+        .page-header {
+            background: linear-gradient(135deg, #005642 0%, #007a5e 100%);
+            color: var(--white);
+            padding: 55px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            color: #d1fae5;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* Search & Filters */
+        .filter-section {
+            padding: 35px 0 20px 0;
+        }
+
+        .filter-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: var(--white);
+            padding: 18px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .class-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 22px;
+            border-radius: 30px;
+            border: 2px solid var(--primary-light);
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border-radius: 30px;
+            border: 1px solid #cbd5e1;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 102, 79, 0.15);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* Subjects Grid */
+        .subjects-section {
+            padding: 25px 0 70px 0;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .subject-card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 30px rgba(0, 102, 79, 0.12);
+        }
+
+        .subject-icon-wrap {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            transition: 0.3s;
+            padding: 12px;
+        }
+
+        .subject-icon-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .subject-card:hover .subject-icon-wrap {
+            transform: scale(1.1) rotate(3deg);
+            background: #d1fae5;
+        }
+
+        .subject-card h3 {
+            font-size: 19px;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .subject-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .chapter-count-badge {
+            display: inline-block;
+            background: #f1f5f9;
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .btn-view-notes {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .subject-card:hover .btn-view-notes {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Chapter Modal / Details Box */
+        .chapter-list-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            font-size: 22px;
+            color: var(--primary-color);
+        }
+
+        .modal-close {
+            background: #f1f5f9;
+            border: none;
+            font-size: 18px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        .chapter-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 12px;
+            transition: 0.2s;
+        }
+
+        .chapter-item:hover {
+            background: #f0fdf4;
+            border-color: #86efac;
+        }
+
+        .chapter-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .chapter-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .chapter-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-ch-action {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+        }
+
+        .btn-ch-download {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-ch-download:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 40px 0 20px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .filter-wrapper {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <a href="sindh_board_digital_learning_platform.html" class="logo">
+                <i class="fa-solid fa-graduation-cap" style="color: #00664f;"></i>
+                <span>Sindh Board Digital</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="sindh_board_digital_learning_platform.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="notes.html" class="active">Notes</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="past_papers.html">Past Papers</a></li>
+                <li><a href="brain_gym.html">Brain Gym</a></li>
+            </ul>
+
+            <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                class="uiverse-btn-shine" onclick="alert('Download Sindh Board Digital App APK')">
+                <i class="fa-brands fa-android"></i> Get App
+            </a>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Sindh Board Chapter-wise Notes</h1>
+            <p>Comprehensive, syllabus-aligned study material with solved numericals, MCQs, and question answers for
+                Matric (Class 9th & 10th).</p>
+        </div>
+    </section>
+
+    <!-- Filter & Search -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-wrapper">
+                <div class="class-tabs">
+                    <button class="tab-btn active" onclick="filterClass('all', this)">All Classes</button>
+                    <button class="tab-btn" onclick="filterClass('9th', this)">Class 9th</button>
+                    <button class="tab-btn" onclick="filterClass('10th', this)">Class 10th</button>
+                </div>
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="subjectSearch" onkeyup="searchSubjects()"
+                        placeholder="Search subjects or chapters...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Grid -->
+    <section class="subjects-section">
+        <div class="container">
+            <div class="subjects-grid" id="subjectsGrid">
+
+                <!-- Physics -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('Physics', 9, ['Physical Quantities & Measurement', 'Kinematics', 'Dynamics', 'Turning Effect of Forces', 'Forces and Matter', 'Gravitation', 'Properties of Matter', 'Thermal Properties of Matter', 'Transfer of Heat'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_physics.png" alt="Physics Icon">
+                    </div>
+                    <h3>Physics</h3>
+                    <p>Concepts, Formulas, Derivations & Solved Numericals</p>
+                    <span class="chapter-count-badge">9 Chapters Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+                <!-- Chemistry -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('Chemistry', 8, ['Fundamentals of Chemistry', 'Structure of Atoms', 'Periodic Table & Periodicity', 'Structure of Molecules', 'Physical States of Matter', 'Solutions', 'Electrochemistry', 'Chemical Reactivity'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_chemistry.png" alt="Chemistry Icon">
+                    </div>
+                    <h3>Chemistry</h3>
+                    <p>Reactions, Organic/Inorganic, Periodic Table & Labs</p>
+                    <span class="chapter-count-badge">8 Chapters Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+                <!-- Biology -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('Biology', 9, ['Introduction to Biology', 'Solving a Biological Problem', 'Biodiversity', 'Cells and Tissues', 'Cell Cycle', 'Enzymes', 'Bioenergetics', 'Nutrition', 'Transport'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_biology.png" alt="Biology Icon">
+                    </div>
+                    <h3>Biology</h3>
+                    <p>Cell Biology, Human Physiology, Genetics & Ecology</p>
+                    <span class="chapter-count-badge">9 Chapters Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+                <!-- Mathematics -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('Mathematics', 12, ['Real and Complex Numbers', 'Logarithms', 'Algebraic Expressions & Formulas', 'Factorization', 'Algebraic Manipulation', 'Linear Equations & Inequalities', 'Linear Graphs & Applications', 'Geometry & Theorems'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_math.png" alt="Math Icon">
+                    </div>
+                    <h3>Mathematics</h3>
+                    <p>Step-by-step exercise solutions, formulas & theorem proofs</p>
+                    <span class="chapter-count-badge">12 Units Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+                <!-- Computer Science -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('Computer Science', 7, ['Fundamentals of Computer', 'Fundamentals of Operating System', 'Office Automation', 'Data Communication & Networks', 'Computer Security and Ethics', 'Web Development (HTML/CSS)', 'Database Fundamentals'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_computer-science.png" alt="Computer Science Icon">
+                    </div>
+                    <h3>Computer Science</h3>
+                    <p>Programming concepts, Networking, Hardware & Web Design</p>
+                    <span class="chapter-count-badge">7 Chapters Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+                <!-- English -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('English', 8, ['The Last Sermon of the Prophet (PBUH)', 'Shah Abdul Latif Bhittai', 'The Neem Tree (Poem)', 'Daffodils (Poem)', 'Grammar & Composition', 'Formal Letters & Applications', 'Essays & Paragraphs', 'Comprehension Passages'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_english.png" alt="English Icon">
+                    </div>
+                    <h3>English</h3>
+                    <p>Stories, Poems, Essays, Letters, Grammar & Summaries</p>
+                    <span class="chapter-count-badge">8 Units Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+                <!-- Pakistan Studies -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('Pakistan Studies', 6, ['Ideological Basis of Pakistan', 'Making of Pakistan', 'Constitutional Development in Pakistan', 'Land and Climate of Pakistan', 'Resources of Pakistan', 'Industrial Development'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_pakstudies.png" alt="Pak Studies Icon">
+                    </div>
+                    <h3>Pakistan Studies</h3>
+                    <p>History, Geography, Constitution, Culture & Economy</p>
+                    <span class="chapter-count-badge">6 Chapters Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+                <!-- Islamiat -->
+                <div class="subject-card" data-class="9th"
+                    onclick="openSubjectModal('Islamiat Compulsory', 5, ['Surah Al-Anfal (Verses & Translation)', 'Hadith Nabawi (PBUH)', 'Pillars of Islam (Tauheed, Namaz, Roza, Zakat, Hajj)', 'Uswah-e-Hasana (Life of Prophet PBUH)', 'Islamic Ethics & Morals'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_islamiat.png" alt="Islamiat Icon">
+                    </div>
+                    <h3>Islamiat</h3>
+                    <p>Quranic Verses with Translation, Ahadith & Seerat-un-Nabi</p>
+                    <span class="chapter-count-badge">5 Sections Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+                <!-- Sindhi -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('Sindhi Salees', 8, ['Hamd & Naat (Sindhi)', 'Sachal Sarmast', 'Sindhi Culture & Heritage', 'Sindhi Grammar & Qawaid', 'Essays & Mazmoon Nigari', 'Sindhi Short Stories', 'Comprehension & Vocabulary', 'Sindhi Literature'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_sindhi.png" alt="Sindhi Icon">
+                    </div>
+                    <h3>Sindhi</h3>
+                    <p>Sindhi Literature, Grammar, Poetry, Lessons & Translations</p>
+                    <span class="chapter-count-badge">8 Lessons Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+                <!-- Urdu -->
+                <div class="subject-card" data-class="9th 10th"
+                    onclick="openSubjectModal('Urdu Lazmi', 8, ['Hamd & Naat (Urdu)', 'Mirza Ghalib ke Khutoot', 'Allama Iqbal Nazmein', 'Qawaid-o-Insha (Grammar)', 'Khatoot & Darkhwast', 'Mazmoon Nigari (Essays)', 'Khulasa & Tashreeh', 'Sabq & Afsanay'])">
+                    <div class="subject-icon-wrap">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_urdu.png" alt="Urdu Icon">
+                    </div>
+                    <h3>Urdu</h3>
+                    <p>Hissa Nasar, Hissa Nazam, Ghazliyat & Urdu Grammar</p>
+                    <span class="chapter-count-badge">8 Units Available</span>
+                    <button class="btn-view-notes">
+                        <i class="fa-regular fa-file-lines"></i> Open Notes
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Chapters -->
+    <div class="chapter-list-modal" id="subjectModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalSubjectTitle">Physics Notes</h2>
+                    <p style="font-size: 13px; color: #64748b;" id="modalSubjectSubtitle">Class 9th & 10th Sindh
+                        Textbook Board</p>
+                </div>
+                <button class="modal-close" onclick="closeSubjectModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="modalChaptersContainer">
+                <!-- Chapters injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Sindh Board Digital Learning Platform. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        function filterClass(className, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.subject-card');
+            cards.forEach(card => {
+                const target = card.getAttribute('data-class');
+                if (className === 'all' || target.includes(className)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function searchSubjects() {
+            const input = document.getElementById('subjectSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.subject-card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                if (title.includes(input) || desc.includes(input)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openSubjectModal(subjectName, count, chapters) {
+            document.getElementById('modalSubjectTitle').innerText = subjectName + " Notes";
+            document.getElementById('modalSubjectSubtitle').innerText = count + " Chapters • Sindh Textbook Board Syllabus";
+
+            const container = document.getElementById('modalChaptersContainer');
+            container.innerHTML = '';
+
+            chapters.forEach((ch, idx) => {
+                const div = document.createElement('div');
+                div.className = 'chapter-item';
+                div.innerHTML = `
+                    <div>
+                        <div class="chapter-title">Chapter ${idx + 1}: ${ch}</div>
+                        <div class="chapter-desc">Key Points, Solved Exercises & Short/Long Questions</div>
+                    </div>
+                    <div class="chapter-actions">
+                        <button class="btn-ch-action btn-ch-download" onclick="downloadChapter('${subjectName}', ${idx + 1})">
+                            <i class="fa-solid fa-download"></i> PDF
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('subjectModal').style.display = 'flex';
+        }
+
+        function closeSubjectModal() {
+            document.getElementById('subjectModal').style.display = 'none';
+        }
+
+        function downloadChapter(subject, chNum) {
+            alert(`📥 Downloading ${subject} Chapter ${chNum} PDF Notes...\n\nTo access all complete chapter-wise solved notes offline without internet, download the official Sindh Board App APK!`);
+        }
+
+        // Close modal on click outside
+        window.onclick = function (event) {
+            const modal = document.getElementById('subjectModal');
+            if (event.target == modal) {
+                closeSubjectModal();
+            }
+        }
+    </script>
+</body>
+
+</html>

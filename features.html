@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Sindh Board Digital Learning Platform</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #00664f;
+            --primary-dark: #004d3b;
+            --primary-light: #e6f4f0;
+            --accent-glow: #10b981;
+            --accent-gold: #f59e0b;
+            --cyber-blue: #0284c7;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 102, 79, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* 1. Navigation Bar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            font-size: 26px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            padding: 6px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .uiverse-btn-shine {
+            position: relative;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 102, 79, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .uiverse-btn-shine:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 79, 0.4);
+        }
+
+        /* 2. Redesigned Hero Header */
+        .features-hero {
+            background: linear-gradient(135deg, #064e3b 0%, #00664f 50%, #0f172a 100%);
+            color: var(--white);
+            padding: 70px 0 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+            top: -120px;
+            left: 10%;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #a7f3d0;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .features-hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .features-hero h1 span {
+            background: linear-gradient(135deg, #34d399, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features-hero p {
+            font-size: 16px;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* 3. Core Features Grid (6 Power Cards) */
+        .features-grid-sec {
+            padding: 55px 0 40px 0;
+        }
+
+        .section-center-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 45px auto;
+        }
+
+        .section-center-heading h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .section-center-heading p {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .power-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .power-feature-card {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 32px 28px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .power-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-glow));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .power-feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 102, 79, 0.12);
+        }
+
+        .power-feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon-bubble {
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .power-feature-card:hover .card-icon-bubble {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 18px rgba(0, 102, 79, 0.25);
+        }
+
+        .power-feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .power-feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .feature-check-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .feature-check-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .feature-check-list li i {
+            color: var(--accent-glow);
+            font-size: 14px;
+        }
+
+        /* 4. Interactive App Screens Showcase */
+        .screens-showcase-sec {
+            padding: 50px 0 70px 0;
+            background: #ffffff;
+        }
+
+        .screens-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 35px;
+        }
+
+        .screen-mockup-card {
+            background: var(--bg-light);
+            border-radius: 24px;
+            border: 2px solid #e2e8f0;
+            padding: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .screen-mockup-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 18px 40px rgba(0, 102, 79, 0.15);
+        }
+
+        .screen-img-wrap {
+            border-radius: 18px;
+            overflow: hidden;
+            border: 3px solid var(--white);
+            margin-bottom: 15px;
+            background: #e2e8f0;
+        }
+
+        .screen-img-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .screen-mockup-card:hover .screen-img-wrap img {
+            transform: scale(1.04);
+        }
+
+        .screen-mockup-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .screen-mockup-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* 5. Comparison Table */
+        .comparison-sec {
+            padding: 60px 0 80px 0;
+        }
+
+        .comparison-card {
+            background: var(--white);
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .comparison-table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            overflow: hidden;
+        }
+
+        .comparison-table-custom th,
+        .comparison-table-custom td {
+            padding: 16px 20px;
+            text-align: left;
+        }
+
+        .comparison-table-custom th {
+            background: #f1f5f9;
+            color: var(--text-dark);
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .comparison-table-custom th.app-highlight-th {
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .comparison-table-custom tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+
+        .comparison-table-custom tr td:last-child {
+            background: #f0fdf4 !important;
+            font-weight: 700;
+            color: #065f46;
+        }
+
+        .comparison-table-custom tr:hover td {
+            background: #eef2ff !important;
+        }
+
+        /* 6. CTA Download Box */
+        .cta-banner-sec {
+            padding: 0 0 70px 0;
+        }
+
+        .uiverse-cta-box {
+            background: linear-gradient(135deg, #004d3b 0%, #00664f 50%, #064e3b 100%);
+            color: var(--white);
+            padding: 50px 40px;
+            border-radius: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            box-shadow: 0 20px 45px rgba(0, 102, 79, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-left-text h2 {
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .cta-left-text p {
+            color: #d1fae5;
+            font-size: 15px;
+            max-width: 580px;
+        }
+
+        .btn-cta-white {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 15px 32px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-cta-white:hover {
+            background: #ecfdf5;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 7. Footer */
+        .footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 40px 0 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .features-hero h1 {
+                font-size: 30px;
+            }
+
+            .power-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-card {
+                padding: 20px;
+                overflow-x: auto;
+            }
+
+            .uiverse-cta-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. NAVIGATION BAR -->
+    <header class="navbar">
+        <div class="container">
+            <a href="sindh_board_digital_learning_platform.html" class="logo">
+                <i class="fa-solid fa-graduation-cap" style="color: #00664f;"></i>
+                <span>Sindh Board Digital</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="sindh_board_digital_learning_platform.html">Home</a></li>
+                <li><a href="features.html" class="active">Features</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="past_papers.html">Past Papers</a></li>
+                <li><a href="brain_gym.html">Brain Gym</a></li>
+            </ul>
+
+            <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                class="uiverse-btn-shine" onclick="alert('Download Sindh Board Digital App APK')">
+                <i class="fa-brands fa-android"></i> Get App
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. REDESIGNED HERO SECTION -->
+    <section class="features-hero">
+        <div class="container">
+            <div class="hero-pill-badge">
+                <i class="fa-solid fa-star" style="color: #fbbf24;"></i>
+                <span>Complete Matric Prep Suite • Class 9th & 10th</span>
+            </div>
+
+            <h1>Next-Gen Features for <span>Academic Excellence</span></h1>
+            <p>
+                Engineered specifically for Sindh Board students — combining chapter-wise notes, interactive timed
+                quizzes, 10+ years solved board papers, and gamified cognitive brain drills into one powerful digital
+                ecosystem.
+            </p>
+
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="#powerFeatures" class="uiverse-btn-shine" style="padding: 12px 28px; font-size: 15px;">
+                    <i class="fa-solid fa-compass"></i> Explore All Features
+                </a>
+                <a href="notes.html" class="btn-cta-white" style="padding: 12px 28px; font-size: 15px;">
+                    <i class="fa-solid fa-book-open"></i> Start Reading Notes
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. POWER FEATURES GRID (6 Pillars) -->
+    <section class="features-grid-sec" id="powerFeatures">
+        <div class="container">
+            <div class="section-center-heading">
+                <h2>Everything Sindh Students Need to Excel</h2>
+                <p>Curated by experienced board educators to guarantee 100% preparation for annual matric examinations.
+                </p>
+            </div>
+
+            <div class="power-cards-grid">
+
+                <!-- 1. Chapter Notes -->
+                <div class="power-feature-card">
+                    <div class="card-icon-bubble">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+                    <h3>Chapter-wise Syllabus Notes</h3>
+                    <p>Comprehensive study material for all 10 subjects with step-by-step solved numericals,
+                        derivations, and question banks.</p>
+                    <ul class="feature-check-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Aligned with latest Sindh Textbook Board</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Available in Urdu, Sindhi & English</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Downloadable PDF notes for offline study</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Interactive Timed Quizzes -->
+                <div class="power-feature-card">
+                    <div class="card-icon-bubble">
+                        <i class="fa-solid fa-stopwatch"></i>
+                    </div>
+                    <h3>Interactive Timed MCQ Arena</h3>
+                    <p>Practice board-pattern MCQs with live 15-second timer countdown, instant conceptual feedback, and
+                        automated board grading.</p>
+                    <ul class="feature-check-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Instant AI scoring and explanation</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Live answer streaks and combo XP points</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Chapter-by-chapter test series</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Past Papers Repository -->
+                <div class="power-feature-card">
+                    <div class="card-icon-bubble">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <h3>10+ Years Solved Past Papers</h3>
+                    <p>Access over a decade of official solved board papers for Karachi, Hyderabad, Sukkur, Larkana, and
+                        Mirpurkhas educational boards.</p>
+                    <ul class="feature-check-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Solved Section A (MCQs), B & C</li>
+                        <li><i class="fa-solid fa-circle-check"></i> High-frequency repeated questions marked</li>
+                        <li><i class="fa-solid fa-circle-check"></i> One-click full bundle PDF download</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Brain Gym -->
+                <div class="power-feature-card">
+                    <div class="card-icon-bubble">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3>Brain Gym Cognitive Drills</h3>
+                    <p>Gamified memory matrix challenges, rapid mental math drills, and daily study streaks to sharpen
+                        focus and formula recall.</p>
+                    <ul class="feature-check-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Interactive memory card match game</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Rapid mental math speed calculations</li>
+                        <li><i class="fa-solid fa-circle-check"></i> 6 Unlocked mastery achievement badges</li>
+                    </ul>
+                </div>
+
+                <!-- 5. Offline PDF Mode -->
+                <div class="power-feature-card">
+                    <div class="card-icon-bubble">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                    </div>
+                    <h3>100% Offline Study Mode</h3>
+                    <p>Download your notes, model papers, and solved exercises once, then study freely without needing
+                        internet connection or mobile data.</p>
+                    <ul class="feature-check-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Zero data consumption during study</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Built-in smooth PDF viewer</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Bookmark important formulas and pages</li>
+                    </ul>
+                </div>
+
+                <!-- 6. Performance Analytics -->
+                <div class="power-feature-card">
+                    <div class="card-icon-bubble">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Smart Progress & Rank Tracker</h3>
+                    <p>Monitor your accuracy rate, topic weaknesses, completed chapters, and projected board examination
+                        grade in real-time.</p>
+                    <ul class="feature-check-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Grade A-1 readiness percentage</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Daily study time & streak counter</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Subject-wise strength & weakness report</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. APP SCREENS SHOWCASE (Using Local Screenshots) -->
+    <section class="screens-showcase-sec">
+        <div class="container">
+            <div class="section-center-heading">
+                <h2>Designed for Modern Learning</h2>
+                <p>Take a tour of our clean, fast, and mobile-optimized app UI screens.</p>
+            </div>
+
+            <div class="screens-gallery-grid">
+                <!-- Screen 1 -->
+                <div class="screen-mockup-card">
+                    <div class="screen-img-wrap">
+                        <img src="screenshots/APP Design OF FYP 1_page-0001.jpg" alt="Home Dashboard Screen"
+                            onerror="this.src='Logo/SindhLearningBooks.png'">
+                    </div>
+                    <h4>Home Dashboard</h4>
+                    <p>Quick access to subjects, daily goals & announcements</p>
+                </div>
+
+                <!-- Screen 2 -->
+                <div class="screen-mockup-card">
+                    <div class="screen-img-wrap">
+                        <img src="screenshots/APP Design OF FYP 1_page-0002.jpg" alt="Quiz Arena Screen"
+                            onerror="this.src='Logo/SLTB.png'">
+                    </div>
+                    <h4>Quiz Arena</h4>
+                    <p>Live timed MCQs with step-by-step solutions</p>
+                </div>
+
+                <!-- Screen 3 -->
+                <div class="screen-mockup-card">
+                    <div class="screen-img-wrap">
+                        <img src="screenshots/APP Design OF FYP 1_page-0003.jpg" alt="Past Papers Repository Screen"
+                            onerror="this.src='Logo/Sindh Learning Logo.png'">
+                    </div>
+                    <h4>Past Papers Repository</h4>
+                    <p>10-Years solved papers categorized by board & year</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. COMPARISON TABLE -->
+    <section class="comparison-sec">
+        <div class="container">
+            <div class="comparison-card">
+                <div class="section-center-heading" style="margin-bottom: 25px;">
+                    <h2>Traditional Study vs. Sindh Board Digital App</h2>
+                    <p>Compare why digital preparation gives you the winning academic edge.</p>
+                </div>
+
+                <table class="comparison-table-custom">
+                    <thead>
+                        <tr>
+                            <th>Key Feature</th>
+                            <th>Traditional Paper Guides</th>
+                            <th class="app-highlight-th"><i class="fa-solid fa-mobile-screen"></i> Sindh Board Digital
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Total Cost</strong></td>
+                            <td>Rs. 4,500 - 7,000 for book sets</td>
+                            <td>100% Free Forever</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weight & Portability</strong></td>
+                            <td>12-15 Heavy physical guidebooks</td>
+                            <td>All inside your smartphone</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Interactive MCQ Testing</strong></td>
+                            <td>Manual paper marking without timers</td>
+                            <td>15s Timed tests with instant AI scoring</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Past Papers Coverage</strong></td>
+                            <td>Buy separate books for each board</td>
+                            <td>10+ Years Solved for all 5 Sindh Boards</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Brain Gym & Cognitive Drills</strong></td>
+                            <td>Not available</td>
+                            <td>Interactive memory & math drills</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Offline Availability</strong></td>
+                            <td>Physical presence required</td>
+                            <td>Offline saved notes & PDF downloads</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CTA BANNER -->
+    <section class="cta-banner-sec">
+        <div class="container">
+            <div class="uiverse-cta-box">
+                <div class="cta-left-text">
+                    <h2>Start Your Exam Preparation Today</h2>
+                    <p>Download the official Android APK and join thousands of Sindh Board students achieving Grade A-1
+                        in Matric.</p>
+                </div>
+
+                <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                    class="btn-cta-white" onclick="alert('Starting Sindh Board Digital Learning App APK Download...')">
+                    <i class="fa-brands fa-android"></i> Download APK (Free)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Sindh Board Digital Learning Platform. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

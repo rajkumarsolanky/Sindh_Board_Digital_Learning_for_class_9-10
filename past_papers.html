@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Papers Repository - Sindh Board Digital Learning</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #00664f;
+            --primary-dark: #004d3b;
+            --primary-light: #e6f4f0;
+            --accent-glow: #10b981;
+            --secondary-color: #f59e0b;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo img {
+            height: 38px;
+            width: auto;
+            border-radius: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            padding: 6px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .uiverse-btn-shine {
+            position: relative;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 102, 79, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        /* Page Banner */
+        .page-header {
+            background: linear-gradient(135deg, #005642 0%, #007a5e 100%);
+            color: var(--white);
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            color: #d1fae5;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* Board Selector Pills */
+        .board-filter-section {
+            padding: 30px 0 10px 0;
+        }
+
+        .board-chips {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .board-chip {
+            background: var(--white);
+            border: 2px solid #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .board-chip:hover,
+        .board-chip.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Table & Cards Layout */
+        .papers-section {
+            padding: 30px 0 70px 0;
+        }
+
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .paper-card {
+            background: var(--white);
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 30px rgba(0, 102, 79, 0.12);
+        }
+
+        .paper-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .paper-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--primary-light);
+            border-radius: 14px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .paper-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .paper-title h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .paper-title span {
+            font-size: 13px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .paper-years-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .year-btn {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .year-btn:hover {
+            background: var(--primary-light);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-download-bundle {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-download-bundle:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 40px 0 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <a href="sindh_board_digital_learning_platform.html" class="logo">
+                <i class="fa-solid fa-graduation-cap" style="color: #00664f;"></i>
+                <span>Sindh Board Digital</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="sindh_board_digital_learning_platform.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="past_papers.html" class="active">Past Papers</a></li>
+                <li><a href="brain_gym.html">Brain Gym</a></li>
+            </ul>
+
+            <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                class="uiverse-btn-shine" onclick="alert('Download Sindh Board Digital App APK')">
+                <i class="fa-brands fa-android"></i> Get App
+            </a>
+        </div>
+    </header>
+
+    <!-- Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>10+ Years Solved Past Papers Repository</h1>
+            <p>Download and practice 10-year official board examination papers for Karachi, Hyderabad, Sukkur, Larkana,
+                and Mirpurkhas Boards.</p>
+        </div>
+    </section>
+
+    <!-- Board Chips -->
+    <section class="board-filter-section">
+        <div class="container">
+            <div class="board-chips">
+                <div class="board-chip active" onclick="filterBoard('BSEK Karachi', this)">BSEK Karachi</div>
+                <div class="board-chip" onclick="filterBoard('BISE Hyderabad', this)">BISE Hyderabad</div>
+                <div class="board-chip" onclick="filterBoard('BISE Sukkur', this)">BISE Sukkur</div>
+                <div class="board-chip" onclick="filterBoard('BISE Larkana', this)">BISE Larkana</div>
+                <div class="board-chip" onclick="filterBoard('BISE Mirpurkhas', this)">BISE Mirpurkhas</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Papers Grid -->
+    <section class="papers-section">
+        <div class="container">
+            <div class="papers-grid">
+
+                <!-- Physics -->
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <div class="paper-icon">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_physics.png" alt="Physics">
+                        </div>
+                        <div class="paper-title">
+                            <h3>Physics Past Papers</h3>
+                            <span class="board-tag">BSEK Karachi • Class 9th & 10th</span>
+                        </div>
+                    </div>
+                    <div class="paper-years-list">
+                        <button class="year-btn" onclick="openPaper('Physics', '2024')"><i
+                                class="fa-regular fa-file-pdf"></i> 2024</button>
+                        <button class="year-btn" onclick="openPaper('Physics', '2023')"><i
+                                class="fa-regular fa-file-pdf"></i> 2023</button>
+                        <button class="year-btn" onclick="openPaper('Physics', '2022')"><i
+                                class="fa-regular fa-file-pdf"></i> 2022</button>
+                        <button class="year-btn" onclick="openPaper('Physics', '2021')"><i
+                                class="fa-regular fa-file-pdf"></i> 2021</button>
+                        <button class="year-btn" onclick="openPaper('Physics', '2020')"><i
+                                class="fa-regular fa-file-pdf"></i> 2020</button>
+                        <button class="year-btn" onclick="openPaper('Physics', '2019')"><i
+                                class="fa-regular fa-file-pdf"></i> 2019</button>
+                        <button class="year-btn" onclick="openPaper('Physics', '2018')"><i
+                                class="fa-regular fa-file-pdf"></i> 2018</button>
+                        <button class="year-btn" onclick="openPaper('Physics', '2017')"><i
+                                class="fa-regular fa-file-pdf"></i> 2017</button>
+                        <button class="year-btn" onclick="openPaper('Physics', 'Solved 10-Yr')"><i
+                                class="fa-solid fa-star" style="color: #f59e0b;"></i> Solved</button>
+                    </div>
+                    <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                        class="btn-download-bundle" onclick="downloadAllPapers('Physics')">
+                        <i class="fa-solid fa-download"></i> Download All 10-Years (PDF)
+                    </a>
+                </div>
+
+                <!-- Chemistry -->
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <div class="paper-icon">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_chemistry.png" alt="Chemistry">
+                        </div>
+                        <div class="paper-title">
+                            <h3>Chemistry Past Papers</h3>
+                            <span class="board-tag">BSEK Karachi • Class 9th & 10th</span>
+                        </div>
+                    </div>
+                    <div class="paper-years-list">
+                        <button class="year-btn" onclick="openPaper('Chemistry', '2024')"><i
+                                class="fa-regular fa-file-pdf"></i> 2024</button>
+                        <button class="year-btn" onclick="openPaper('Chemistry', '2023')"><i
+                                class="fa-regular fa-file-pdf"></i> 2023</button>
+                        <button class="year-btn" onclick="openPaper('Chemistry', '2022')"><i
+                                class="fa-regular fa-file-pdf"></i> 2022</button>
+                        <button class="year-btn" onclick="openPaper('Chemistry', '2021')"><i
+                                class="fa-regular fa-file-pdf"></i> 2021</button>
+                        <button class="year-btn" onclick="openPaper('Chemistry', '2020')"><i
+                                class="fa-regular fa-file-pdf"></i> 2020</button>
+                        <button class="year-btn" onclick="openPaper('Chemistry', '2019')"><i
+                                class="fa-regular fa-file-pdf"></i> 2019</button>
+                        <button class="year-btn" onclick="openPaper('Chemistry', '2018')"><i
+                                class="fa-regular fa-file-pdf"></i> 2018</button>
+                        <button class="year-btn" onclick="openPaper('Chemistry', '2017')"><i
+                                class="fa-regular fa-file-pdf"></i> 2017</button>
+                        <button class="year-btn" onclick="openPaper('Chemistry', 'Solved 10-Yr')"><i
+                                class="fa-solid fa-star" style="color: #f59e0b;"></i> Solved</button>
+                    </div>
+                    <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                        class="btn-download-bundle" onclick="downloadAllPapers('Chemistry')">
+                        <i class="fa-solid fa-download"></i> Download All 10-Years (PDF)
+                    </a>
+                </div>
+
+                <!-- Biology -->
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <div class="paper-icon">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_biology.png" alt="Biology">
+                        </div>
+                        <div class="paper-title">
+                            <h3>Biology Past Papers</h3>
+                            <span class="board-tag">BSEK Karachi • Class 9th & 10th</span>
+                        </div>
+                    </div>
+                    <div class="paper-years-list">
+                        <button class="year-btn" onclick="openPaper('Biology', '2024')"><i
+                                class="fa-regular fa-file-pdf"></i> 2024</button>
+                        <button class="year-btn" onclick="openPaper('Biology', '2023')"><i
+                                class="fa-regular fa-file-pdf"></i> 2023</button>
+                        <button class="year-btn" onclick="openPaper('Biology', '2022')"><i
+                                class="fa-regular fa-file-pdf"></i> 2022</button>
+                        <button class="year-btn" onclick="openPaper('Biology', '2021')"><i
+                                class="fa-regular fa-file-pdf"></i> 2021</button>
+                        <button class="year-btn" onclick="openPaper('Biology', '2020')"><i
+                                class="fa-regular fa-file-pdf"></i> 2020</button>
+                        <button class="year-btn" onclick="openPaper('Biology', '2019')"><i
+                                class="fa-regular fa-file-pdf"></i> 2019</button>
+                        <button class="year-btn" onclick="openPaper('Biology', '2018')"><i
+                                class="fa-regular fa-file-pdf"></i> 2018</button>
+                        <button class="year-btn" onclick="openPaper('Biology', '2017')"><i
+                                class="fa-regular fa-file-pdf"></i> 2017</button>
+                        <button class="year-btn" onclick="openPaper('Biology', 'Solved 10-Yr')"><i
+                                class="fa-solid fa-star" style="color: #f59e0b;"></i> Solved</button>
+                    </div>
+                    <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                        class="btn-download-bundle" onclick="downloadAllPapers('Biology')">
+                        <i class="fa-solid fa-download"></i> Download All 10-Years (PDF)
+                    </a>
+                </div>
+
+                <!-- Mathematics -->
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <div class="paper-icon">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_math.png" alt="Math">
+                        </div>
+                        <div class="paper-title">
+                            <h3>Mathematics Past Papers</h3>
+                            <span class="board-tag">BSEK Karachi • Class 9th & 10th</span>
+                        </div>
+                    </div>
+                    <div class="paper-years-list">
+                        <button class="year-btn" onclick="openPaper('Mathematics', '2024')"><i
+                                class="fa-regular fa-file-pdf"></i> 2024</button>
+                        <button class="year-btn" onclick="openPaper('Mathematics', '2023')"><i
+                                class="fa-regular fa-file-pdf"></i> 2023</button>
+                        <button class="year-btn" onclick="openPaper('Mathematics', '2022')"><i
+                                class="fa-regular fa-file-pdf"></i> 2022</button>
+                        <button class="year-btn" onclick="openPaper('Mathematics', '2021')"><i
+                                class="fa-regular fa-file-pdf"></i> 2021</button>
+                        <button class="year-btn" onclick="openPaper('Mathematics', '2020')"><i
+                                class="fa-regular fa-file-pdf"></i> 2020</button>
+                        <button class="year-btn" onclick="openPaper('Mathematics', '2019')"><i
+                                class="fa-regular fa-file-pdf"></i> 2019</button>
+                        <button class="year-btn" onclick="openPaper('Mathematics', '2018')"><i
+                                class="fa-regular fa-file-pdf"></i> 2018</button>
+                        <button class="year-btn" onclick="openPaper('Mathematics', '2017')"><i
+                                class="fa-regular fa-file-pdf"></i> 2017</button>
+                        <button class="year-btn" onclick="openPaper('Mathematics', 'Solved 10-Yr')"><i
+                                class="fa-solid fa-star" style="color: #f59e0b;"></i> Solved</button>
+                    </div>
+                    <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                        class="btn-download-bundle" onclick="downloadAllPapers('Mathematics')">
+                        <i class="fa-solid fa-download"></i> Download All 10-Years (PDF)
+                    </a>
+                </div>
+
+                <!-- Computer Science -->
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <div class="paper-icon">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_computer-science.png" alt="Computer">
+                        </div>
+                        <div class="paper-title">
+                            <h3>Computer Science</h3>
+                            <span class="board-tag">BSEK Karachi • Class 9th & 10th</span>
+                        </div>
+                    </div>
+                    <div class="paper-years-list">
+                        <button class="year-btn" onclick="openPaper('Computer Science', '2024')"><i
+                                class="fa-regular fa-file-pdf"></i> 2024</button>
+                        <button class="year-btn" onclick="openPaper('Computer Science', '2023')"><i
+                                class="fa-regular fa-file-pdf"></i> 2023</button>
+                        <button class="year-btn" onclick="openPaper('Computer Science', '2022')"><i
+                                class="fa-regular fa-file-pdf"></i> 2022</button>
+                        <button class="year-btn" onclick="openPaper('Computer Science', '2021')"><i
+                                class="fa-regular fa-file-pdf"></i> 2021</button>
+                        <button class="year-btn" onclick="openPaper('Computer Science', '2020')"><i
+                                class="fa-regular fa-file-pdf"></i> 2020</button>
+                        <button class="year-btn" onclick="openPaper('Computer Science', '2019')"><i
+                                class="fa-regular fa-file-pdf"></i> 2019</button>
+                        <button class="year-btn" onclick="openPaper('Computer Science', '2018')"><i
+                                class="fa-regular fa-file-pdf"></i> 2018</button>
+                        <button class="year-btn" onclick="openPaper('Computer Science', '2017')"><i
+                                class="fa-regular fa-file-pdf"></i> 2017</button>
+                        <button class="year-btn" onclick="openPaper('Computer Science', 'Solved 10-Yr')"><i
+                                class="fa-solid fa-star" style="color: #f59e0b;"></i> Solved</button>
+                    </div>
+                    <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                        class="btn-download-bundle" onclick="downloadAllPapers('Computer Science')">
+                        <i class="fa-solid fa-download"></i> Download All 10-Years (PDF)
+                    </a>
+                </div>
+
+                <!-- English -->
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <div class="paper-icon">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_english.png" alt="English">
+                        </div>
+                        <div class="paper-title">
+                            <h3>English Past Papers</h3>
+                            <span class="board-tag">BSEK Karachi • Class 9th & 10th</span>
+                        </div>
+                    </div>
+                    <div class="paper-years-list">
+                        <button class="year-btn" onclick="openPaper('English', '2024')"><i
+                                class="fa-regular fa-file-pdf"></i> 2024</button>
+                        <button class="year-btn" onclick="openPaper('English', '2023')"><i
+                                class="fa-regular fa-file-pdf"></i> 2023</button>
+                        <button class="year-btn" onclick="openPaper('English', '2022')"><i
+                                class="fa-regular fa-file-pdf"></i> 2022</button>
+                        <button class="year-btn" onclick="openPaper('English', '2021')"><i
+                                class="fa-regular fa-file-pdf"></i> 2021</button>
+                        <button class="year-btn" onclick="openPaper('English', '2020')"><i
+                                class="fa-regular fa-file-pdf"></i> 2020</button>
+                        <button class="year-btn" onclick="openPaper('English', '2019')"><i
+                                class="fa-regular fa-file-pdf"></i> 2019</button>
+                        <button class="year-btn" onclick="openPaper('English', '2018')"><i
+                                class="fa-regular fa-file-pdf"></i> 2018</button>
+                        <button class="year-btn" onclick="openPaper('English', '2017')"><i
+                                class="fa-regular fa-file-pdf"></i> 2017</button>
+                        <button class="year-btn" onclick="openPaper('English', 'Solved 10-Yr')"><i
+                                class="fa-solid fa-star" style="color: #f59e0b;"></i> Solved</button>
+                    </div>
+                    <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                        class="btn-download-bundle" onclick="downloadAllPapers('English')">
+                        <i class="fa-solid fa-download"></i> Download All 10-Years (PDF)
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- APK Download Prompt Modal -->
+    <div id="apkDownloadModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
+        <div
+            style="background: #ffffff; border-radius: 24px; max-width: 460px; width: 100%; padding: 35px 30px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.25); position: relative; animation: modalPop 0.3s ease;">
+            <div
+                style="width: 75px; height: 75px; background: linear-gradient(135deg, #00664f, #10b981); color: #ffffff; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 34px; margin: 0 auto 20px; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);">
+                <i class="fa-brands fa-android"></i>
+            </div>
+            <h2 id="modalPaperTitle" style="font-size: 22px; color: #1e293b; font-weight: 700; margin-bottom: 10px;">
+                Download Sindh Board App</h2>
+            <p id="modalPaperDesc" style="font-size: 14px; color: #64748b; line-height: 1.5; margin-bottom: 25px;">
+                Complete 10-Years Solved Past Papers with detailed answer keys and step-by-step numericals are available
+                offline inside the official app.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <button class="uiverse-btn-shine" onclick="triggerApkDownload()"
+                    style="justify-content: center; width: 100%; padding: 14px; font-size: 15px; border-radius: 12px;">
+                    <i class="fa-brands fa-android"></i> Download Official APK (Free)
+                </button>
+                <button onclick="closeApkModal()"
+                    style="background: #f1f5f9; color: #64748b; border: none; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s;">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Sindh Board Digital Learning Platform. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentBoard = 'BSEK Karachi';
+        let selectedPaperInfo = '';
+
+        function filterBoard(boardName, chip) {
+            currentBoard = boardName;
+            document.querySelectorAll('.board-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+
+            document.querySelectorAll('.board-tag').forEach(tag => {
+                tag.innerText = `${boardName} • Class 9th & 10th`;
+            });
+        }
+
+        function openPaper(subject, year) {
+            selectedPaperInfo = `${currentBoard} - ${subject} (${year})`;
+            showApkModal(`Download App for ${subject} (${year})`, `To view and download complete solved paper of ${selectedPaperInfo}, please download the official Sindh Board Android APK.`);
+        }
+
+        function downloadAllPapers(subject) {
+            selectedPaperInfo = `${currentBoard} - ${subject} 10-Years Bundle`;
+            showApkModal(`Download 10-Years Bundle (${subject})`, `Downloading complete 10-Years Bundle for ${currentBoard} - ${subject} (PDF)... To access full offline PDF books and solved past papers, please download the official Android APK!`);
+        }
+
+        function showApkModal(title, desc) {
+            document.getElementById('modalPaperTitle').innerText = title;
+            document.getElementById('modalPaperDesc').innerText = desc;
+            document.getElementById('apkDownloadModal').style.display = 'flex';
+        }
+
+        function closeApkModal() {
+            document.getElementById('apkDownloadModal').style.display = 'none';
+        }
+
+        function triggerApkDownload() {
+            alert(`📥 Thank you! Starting official Sindh Board Learning App APK download for ${selectedPaperInfo || 'Android'}...`);
+            closeApkModal();
+        }
+
+        // Close on background click
+        window.onclick = function (event) {
+            const modal = document.getElementById('apkDownloadModal');
+            if (event.target == modal) {
+                closeApkModal();
+            }
+        }
+    </script>
+</body>
+
+</html>

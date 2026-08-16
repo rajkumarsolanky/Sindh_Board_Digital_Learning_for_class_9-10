@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Gym & Memory Arena - Sindh Board Digital Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #00664f;
+            --primary-dark: #004d3b;
+            --primary-light: #e6f4f0;
+            --cyber-purple: #6366f1;
+            --cyber-purple-dark: #4338ca;
+            --cyber-violet: #8b5cf6;
+            --accent-glow: #10b981;
+            --accent-gold: #f59e0b;
+            --accent-red: #ef4444;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --card-shadow: 0 10px 30px rgba(99, 102, 241, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* 1. Navigation Bar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            font-size: 26px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            padding: 6px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .uiverse-btn-shine {
+            position: relative;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 102, 79, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .uiverse-btn-shine:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 79, 0.4);
+        }
+
+        /* 2. Redesigned Cosmic Cyber Hero */
+        .brain-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #064e3b 100%);
+            color: var(--white);
+            padding: 65px 0 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brain-hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+            top: -100px;
+            right: 5%;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-left-col {
+            flex: 1.2;
+            min-width: 320px;
+        }
+
+        .hero-chip-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(165, 180, 252, 0.3);
+            color: #c7d2fe;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 18px;
+            backdrop-filter: blur(8px);
+        }
+
+        .brain-hero h1 {
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .brain-hero h1 span {
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brain-hero p {
+            font-size: 16px;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            max-width: 540px;
+        }
+
+        /* Hero Right Player Profile Dashboard Card */
+        .player-dashboard-card {
+            flex: 0.9;
+            min-width: 300px;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .player-header-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .player-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #6366f1, #10b981);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--white);
+            box-shadow: 0 8px 18px rgba(99, 102, 241, 0.35);
+        }
+
+        .player-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .player-info span {
+            font-size: 13px;
+            color: #a5b4fc;
+            font-weight: 500;
+        }
+
+        .xp-bar-wrap {
+            margin-bottom: 20px;
+        }
+
+        .xp-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #cbd5e1;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .xp-track {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .xp-fill {
+            height: 100%;
+            width: 72%;
+            background: linear-gradient(90deg, #6366f1, #10b981);
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+        }
+
+        .dashboard-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .stat-mini-pill {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 10px 8px;
+        }
+
+        .stat-mini-pill h4 {
+            font-size: 16px;
+            font-weight: 800;
+            color: #34d399;
+        }
+
+        .stat-mini-pill p {
+            font-size: 11px;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        /* 3. Game Mode Tabs Bar */
+        .game-modes-section {
+            padding: 40px 0 20px 0;
+        }
+
+        .modes-nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .mode-tab-btn {
+            background: var(--white);
+            border: 2px solid #e2e8f0;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .mode-tab-btn i {
+            font-size: 18px;
+            color: var(--cyber-purple);
+            transition: 0.3s;
+        }
+
+        .mode-tab-btn:hover,
+        .mode-tab-btn.active {
+            border-color: var(--cyber-purple);
+            background: var(--cyber-purple);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+        }
+
+        .mode-tab-btn:hover i,
+        .mode-tab-btn.active i {
+            color: var(--white);
+        }
+
+        /* 4. Active Game Arena Cards */
+        .arena-game-container {
+            background: var(--white);
+            border-radius: 28px;
+            padding: 40px;
+            border: 2px solid #e2e8f0;
+            box-shadow: var(--card-shadow);
+            max-width: 860px;
+            margin: 0 auto 50px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        /* --- GAME 1: MEMORY MATRIX --- */
+        .game-top-hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .hud-pill {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hud-pill.timer {
+            color: #ea580c;
+            background: #fff7ed;
+            border-color: #fed7aa;
+        }
+
+        /* Memory Cards Grid */
+        .cards-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 520px;
+            margin: 0 auto 30px auto;
+            perspective: 1000px;
+        }
+
+        .matrix-card {
+            height: 95px;
+            background: #f1f5f9;
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            user-select: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .matrix-card:hover:not(.flipped):not(.matched) {
+            transform: translateY(-4px);
+            border-color: var(--cyber-purple);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+        }
+
+        .matrix-card.flipped {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            border-color: #6366f1;
+            color: var(--white);
+        }
+
+        .matrix-card.matched {
+            background: linear-gradient(135deg, #10b981, #059669) !important;
+            border-color: #10b981 !important;
+            cursor: default;
+            animation: matchScale 0.4s ease;
+        }
+
+        @keyframes matchScale {
+            0% {
+                transform: scale(1) rotateY(180deg);
+            }
+
+            50% {
+                transform: scale(1.15) rotateY(180deg);
+            }
+
+            100% {
+                transform: scale(1) rotateY(180deg);
+            }
+        }
+
+        /* --- GAME 2: SPEED MATH DRILL --- */
+        .math-drill-view {
+            display: none;
+        }
+
+        .math-equation-box {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .math-equation-text {
+            font-size: 46px;
+            font-weight: 900;
+            color: var(--text-dark);
+            letter-spacing: 2px;
+        }
+
+        .math-options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 440px;
+            margin: 0 auto 25px auto;
+        }
+
+        .math-option-btn {
+            background: var(--white);
+            border: 2px solid #e2e8f0;
+            padding: 16px;
+            border-radius: 16px;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .math-option-btn:hover {
+            border-color: var(--cyber-purple);
+            background: #eef2ff;
+            transform: scale(1.04);
+        }
+
+        .math-option-btn.correct {
+            background: #ecfdf5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+        }
+
+        .math-option-btn.wrong {
+            background: #fef2f2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b !important;
+        }
+
+        /* Action Buttons */
+        .btn-action-glow {
+            background: linear-gradient(135deg, var(--cyber-purple) 0%, var(--cyber-purple-dark) 100%);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-action-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(99, 102, 241, 0.45);
+        }
+
+        /* 5. 7-Day & 30-Day Streak Journey Map */
+        .streak-journey-section {
+            padding: 20px 0 50px 0;
+        }
+
+        .streak-journey-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 35px;
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .streak-journey-card h2 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .streak-journey-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .streak-milestones-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+        }
+
+        .milestone-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 110px;
+            position: relative;
+        }
+
+        .milestone-icon-wrap {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #f8fafc;
+            border: 3px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .milestone-icon-wrap img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        .milestone-item.unlocked .milestone-icon-wrap {
+            border-color: #10b981;
+            background: #ecfdf5;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .milestone-item h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .milestone-item span {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* 6. Badges & Achievements Showcase */
+        .achievements-grid-section {
+            padding: 20px 0 70px 0;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+            margin-top: 25px;
+        }
+
+        .uiverse-badge-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .uiverse-badge-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--cyber-purple);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .badge-img-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 8px;
+            transition: transform 0.3s;
+        }
+
+        .badge-img-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .uiverse-badge-card:hover .badge-img-circle {
+            transform: scale(1.12) rotate(4deg);
+        }
+
+        .badge-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .badge-content p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .badge-progress-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #ecfdf5;
+            color: #059669;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* 7. Footer */
+        .footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 40px 0 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .brain-hero h1 {
+                font-size: 30px;
+            }
+
+            .cards-matrix-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .matrix-card {
+                height: 80px;
+                font-size: 26px;
+            }
+
+            .math-equation-text {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. NAVIGATION BAR -->
+    <header class="navbar">
+        <div class="container">
+            <a href="sindh_board_digital_learning_platform.html" class="logo">
+                <i class="fa-solid fa-graduation-cap" style="color: #00664f;"></i>
+                <span>Sindh Board Digital</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="sindh_board_digital_learning_platform.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="past_papers.html">Past Papers</a></li>
+                <li><a href="brain_gym.html" class="active">Brain Gym</a></li>
+            </ul>
+
+            <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk"
+                class="uiverse-btn-shine"
+                onclick="alert('Download Sindh Board Digital App APK for Daily Offline Brain Gym Drills!')">
+                <i class="fa-brands fa-android"></i> Get App
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. REDESIGNED CYBER GAMING HERO -->
+    <section class="brain-hero">
+        <div class="container">
+            <div class="hero-layout">
+                <!-- Left Title Column -->
+                <div class="hero-left-col">
+                    <div class="hero-chip-badge">
+                        <i class="fa-solid fa-brain" style="color: #818cf8;"></i>
+                        <span>Cognitive Power & Memory Gym</span>
+                    </div>
+
+                    <h1>Supercharge Your Mind With <span>Brain Gym Drills</span></h1>
+                    <p>
+                        Gamified memory matrices, lightning mental math drills, and formula retention exercises
+                        engineered to sharpen concentration during long study sessions.
+                    </p>
+
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button class="btn-action-glow"
+                            onclick="document.getElementById('arenaContainer').scrollIntoView({ behavior: 'smooth' })">
+                            <i class="fa-solid fa-play"></i> Play Drills Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Player Profile Dashboard Card -->
+                <div class="player-dashboard-card">
+                    <div class="player-header-row">
+                        <div class="player-avatar">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </div>
+                        <div class="player-info">
+                            <h3>Sindh Scholar #1</h3>
+                            <span>Rank: Neural Master (Level 7)</span>
+                        </div>
+                    </div>
+
+                    <div class="xp-bar-wrap">
+                        <div class="xp-label-row">
+                            <span>Brain Power (XP)</span>
+                            <span id="playerXpText">1,450 / 2,000 XP</span>
+                        </div>
+                        <div class="xp-track">
+                            <div class="xp-fill" id="playerXpFill"></div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-stats-grid">
+                        <div class="stat-mini-pill">
+                            <h4>7 Days</h4>
+                            <p>Active Streak</p>
+                        </div>
+                        <div class="stat-mini-pill">
+                            <h4>6 / 6</h4>
+                            <p>Badges Won</p>
+                        </div>
+                        <div class="stat-mini-pill">
+                            <h4>94%</h4>
+                            <p>Recall Rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. GAME MODES SELECTOR -->
+    <section class="game-modes-section" id="arenaContainer">
+        <div class="container">
+            <div class="modes-nav-bar">
+                <button class="mode-tab-btn active" onclick="switchGameMode('memory', this)">
+                    <i class="fa-solid fa-table-cells-large"></i> Memory Matrix
+                </button>
+                <button class="mode-tab-btn" onclick="switchGameMode('math', this)">
+                    <i class="fa-solid fa-bolt"></i> Speed Math Drill
+                </button>
+            </div>
+
+            <!-- 4. ACTIVE GAME ARENA CONTAINER -->
+            <div class="arena-game-container">
+
+                <!-- MODE 1: MEMORY MATRIX (SCIENCE CONCEPTS) -->
+                <div id="memoryMatrixView">
+                    <div class="game-top-hud">
+                        <div class="hud-pill">
+                            <i class="fa-solid fa-hand-pointer" style="color: #6366f1;"></i>
+                            <span>Moves: <strong id="matrixMoves">0</strong></span>
+                        </div>
+                        <div class="hud-pill">
+                            <i class="fa-solid fa-puzzle-piece" style="color: #10b981;"></i>
+                            <span>Matches: <strong id="matrixMatches">0</strong> / 6</span>
+                        </div>
+                        <div class="hud-pill timer">
+                            <i class="fa-solid fa-stopwatch"></i>
+                            <span>Time: <strong id="matrixTimer">0s</strong></span>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 20px; color: var(--text-dark);">
+                        Match Science & Formula Concept Pairs
+                    </h3>
+
+                    <!-- 4x3 Cards Matrix Grid -->
+                    <div class="cards-matrix-grid" id="matrixGrid">
+                        <!-- Dynamic matrix cards will be injected -->
+                    </div>
+
+                    <button class="btn-action-glow" onclick="resetMemoryGame()">
+                        <i class="fa-solid fa-rotate-right"></i> Reset Board
+                    </button>
+                </div>
+
+                <!-- MODE 2: SPEED MATH DRILL -->
+                <div class="math-drill-view" id="speedMathView">
+                    <div class="game-top-hud">
+                        <div class="hud-pill">
+                            <i class="fa-solid fa-fire" style="color: #ea580c;"></i>
+                            <span>Streak: <strong id="mathStreak">0</strong>x</span>
+                        </div>
+                        <div class="hud-pill">
+                            <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+                            <span>Score: <strong id="mathScore">0</strong></span>
+                        </div>
+                        <div class="hud-pill timer">
+                            <i class="fa-solid fa-stopwatch"></i>
+                            <span>Time: <strong id="mathTimer">30s</strong></span>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 20px; color: var(--text-dark);">
+                        ⚡ Rapid Mental Calculation Drill
+                    </h3>
+
+                    <div class="math-equation-box">
+                        <div class="math-equation-text" id="mathEquation">15 + 28 = ?</div>
+                    </div>
+
+                    <div class="math-options-grid" id="mathOptions">
+                        <!-- 4 choices injected -->
+                    </div>
+
+                    <button class="btn-action-glow" onclick="startMathDrill()">
+                        <i class="fa-solid fa-play"></i> Start New Drill
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. STREAK JOURNEY ROADMAP (With Local Calcader Icons) -->
+    <section class="streak-journey-section">
+        <div class="container">
+            <div class="streak-journey-card">
+                <h2><i class="fa-solid fa-fire-flame-curved" style="color: #ea580c;"></i> Daily Study Streak Roadmap
+                </h2>
+                <p>Complete any quiz or brain drill daily to keep your study fire burning and unlock rare achievement
+                    badges!</p>
+
+                <div class="streak-milestones-row">
+                    <!-- Day 1 -->
+                    <div class="milestone-item unlocked">
+                        <div class="milestone-icon-wrap">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Calcader%20achievements/ic_ach_streak_1.png" alt="1 Day Streak">
+                        </div>
+                        <h4>1 Day</h4>
+                        <span style="color: #10b981;">Completed</span>
+                    </div>
+
+                    <!-- Day 7 -->
+                    <div class="milestone-item unlocked">
+                        <div class="milestone-icon-wrap">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Calcader%20achievements/ic_ach_streak_7.png" alt="7 Day Streak">
+                        </div>
+                        <h4>7 Days</h4>
+                        <span style="color: #10b981;">Active Streak</span>
+                    </div>
+
+                    <!-- Day 14 -->
+                    <div class="milestone-item">
+                        <div class="milestone-icon-wrap">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Calcader%20achievements/ic_ach_streak_14.png" alt="14 Day Streak">
+                        </div>
+                        <h4>14 Days</h4>
+                        <span>7 Days Left</span>
+                    </div>
+
+                    <!-- Day 30 -->
+                    <div class="milestone-item">
+                        <div class="milestone-icon-wrap">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Calcader%20achievements/ic_ach_streak_30.png" alt="30 Day Streak">
+                        </div>
+                        <h4>30 Days</h4>
+                        <span>Locked</span>
+                    </div>
+
+                    <!-- Day 60 -->
+                    <div class="milestone-item">
+                        <div class="milestone-icon-wrap">
+                            <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Calcader%20achievements/ic_ach_streak_60.png" alt="60 Day Streak">
+                        </div>
+                        <h4>60 Days</h4>
+                        <span>Grand Legend</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. BADGES & ACHIEVEMENTS GALLERY (With Local Brain Gym Icons) -->
+    <section class="achievements-grid-section">
+        <div class="container">
+            <h2
+                style="font-size: 26px; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-medal" style="color: #6366f1;"></i> Brain Mastery Badges
+            </h2>
+
+            <div class="badges-grid">
+                <!-- Badge 1 -->
+                <div class="uiverse-badge-card">
+                    <div class="badge-img-circle">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Brain%20Gym%20achievements/ic_ach_brain_1.png" alt="Badge 1">
+                    </div>
+                    <div class="badge-content">
+                        <h4>Quick Thinker</h4>
+                        <p>Solve 20 MCQs in under 3 minutes with zero errors.</p>
+                        <span class="badge-progress-pill"><i class="fa-solid fa-check"></i> Unlocked</span>
+                    </div>
+                </div>
+
+                <!-- Badge 2 -->
+                <div class="uiverse-badge-card">
+                    <div class="badge-img-circle">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Brain%20Gym%20achievements/ic_ach_brain_2.png" alt="Badge 2">
+                    </div>
+                    <div class="badge-content">
+                        <h4>Focus Master</h4>
+                        <p>Complete 5 memory challenges with 100% accuracy.</p>
+                        <span class="badge-progress-pill"><i class="fa-solid fa-check"></i> Unlocked</span>
+                    </div>
+                </div>
+
+                <!-- Badge 3 -->
+                <div class="uiverse-badge-card">
+                    <div class="badge-img-circle">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Brain%20Gym%20achievements/ic_ach_brain_3.png" alt="Badge 3">
+                    </div>
+                    <div class="badge-content">
+                        <h4>Formula Wizard</h4>
+                        <p>Memorize 50 core Physics and Chemistry formulas.</p>
+                        <span class="badge-progress-pill"><i class="fa-solid fa-check"></i> Unlocked</span>
+                    </div>
+                </div>
+
+                <!-- Badge 4 -->
+                <div class="uiverse-badge-card">
+                    <div class="badge-img-circle">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Brain%20Gym%20achievements/ic_ach_brain_4.png" alt="Badge 4">
+                    </div>
+                    <div class="badge-content">
+                        <h4>Speed Demon</h4>
+                        <p>Score 10+ rapid calculation answers in 30 seconds.</p>
+                        <span class="badge-progress-pill"><i class="fa-solid fa-check"></i> Unlocked</span>
+                    </div>
+                </div>
+
+                <!-- Badge 5 -->
+                <div class="uiverse-badge-card">
+                    <div class="badge-img-circle">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Brain%20Gym%20achievements/ic_ach_brain_5.png" alt="Badge 5">
+                    </div>
+                    <div class="badge-content">
+                        <h4>Logic Emperor</h4>
+                        <p>Score 100% in Mathematics Chapter-wise quizzes.</p>
+                        <span class="badge-progress-pill"><i class="fa-solid fa-check"></i> Unlocked</span>
+                    </div>
+                </div>
+
+                <!-- Badge 6 -->
+                <div class="uiverse-badge-card">
+                    <div class="badge-img-circle">
+                        <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Brain%20Gym%20achievements/ic_ach_brain_6.png" alt="Badge 6">
+                    </div>
+                    <div class="badge-content">
+                        <h4>Grand Master</h4>
+                        <p>Maintain continuous 30-day Sindh Board study streak.</p>
+                        <span class="badge-progress-pill"><i class="fa-solid fa-check"></i> Unlocked</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Sindh Board Digital Learning Platform. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE GAME ENGINE JAVASCRIPT -->
+    <script>
+        // Switch between Memory Matrix and Speed Math Drill
+        function switchGameMode(mode, btn) {
+            document.querySelectorAll('.mode-tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (mode === 'memory') {
+                document.getElementById('memoryMatrixView').style.display = 'block';
+                document.getElementById('speedMathView').style.display = 'none';
+            } else {
+                document.getElementById('memoryMatrixView').style.display = 'none';
+                document.getElementById('speedMathView').style.display = 'block';
+                startMathDrill();
+            }
+        }
+
+        /* -------------------------------------------
+           GAME 1: MEMORY MATRIX LOGIC
+           ------------------------------------------- */
+        const matrixIcons = ['⚛️', '🧪', '📐', '🧬', '💻', '📚'];
+        let matrixDeck = [...matrixIcons, ...matrixIcons];
+        let flippedList = [];
+        let matrixMatches = 0;
+        let matrixMoves = 0;
+        let matrixTime = 0;
+        let matrixTimerInterval = null;
+        let matrixStarted = false;
+
+        function shuffle(arr) {
+            return arr.sort(() => Math.random() - 0.5);
+        }
+
+        function initMemoryGame() {
+            const grid = document.getElementById('matrixGrid');
+            grid.innerHTML = '';
+            flippedList = [];
+            matrixMatches = 0;
+            matrixMoves = 0;
+            matrixTime = 0;
+            matrixStarted = false;
+            clearInterval(matrixTimerInterval);
+
+            document.getElementById('matrixMoves').innerText = matrixMoves;
+            document.getElementById('matrixMatches').innerText = matrixMatches;
+            document.getElementById('matrixTimer').innerText = '0s';
+
+            shuffle(matrixDeck).forEach((symbol, idx) => {
+                const card = document.createElement('div');
+                card.className = 'matrix-card';
+                card.setAttribute('data-symbol', symbol);
+                card.innerHTML = `<span style="display:none;">${symbol}</span><i class="fa-solid fa-brain" style="color: #a5b4fc;"></i>`;
+                card.onclick = () => handleMatrixCardClick(card);
+                grid.appendChild(card);
+            });
+        }
+
+        function handleMatrixCardClick(card) {
+            if (!matrixStarted) {
+                matrixStarted = true;
+                matrixTimerInterval = setInterval(() => {
+                    matrixTime++;
+                    document.getElementById('matrixTimer').innerText = matrixTime + 's';
+                }, 1000);
+            }
+
+            if (flippedList.length >= 2 || card.classList.contains('flipped') || card.classList.contains('matched')) {
+                return;
+            }
+
+            card.classList.add('flipped');
+            card.querySelector('span').style.display = 'block';
+            card.querySelector('i').style.display = 'none';
+            flippedList.push(card);
+
+            if (flippedList.length === 2) {
+                matrixMoves++;
+                document.getElementById('matrixMoves').innerText = matrixMoves;
+                checkMatrixMatch();
+            }
+        }
+
+        function checkMatrixMatch() {
+            const [c1, c2] = flippedList;
+            const sym1 = c1.getAttribute('data-symbol');
+            const sym2 = c2.getAttribute('data-symbol');
+
+            if (sym1 === sym2) {
+                c1.classList.add('matched');
+                c2.classList.add('matched');
+                matrixMatches++;
+                document.getElementById('matrixMatches').innerText = matrixMatches;
+                flippedList = [];
+
+                if (matrixMatches === matrixIcons.length) {
+                    clearInterval(matrixTimerInterval);
+                    setTimeout(() => {
+                        alert(`🎉 Fantastic Memory! You solved the Memory Matrix in ${matrixMoves} moves and ${matrixTime} seconds! (+50 XP Earned)`);
+                    }, 350);
+                }
+            } else {
+                setTimeout(() => {
+                    c1.classList.remove('flipped');
+                    c1.querySelector('span').style.display = 'none';
+                    c1.querySelector('i').style.display = 'block';
+
+                    c2.classList.remove('flipped');
+                    c2.querySelector('span').style.display = 'none';
+                    c2.querySelector('i').style.display = 'block';
+                    flippedList = [];
+                }, 750);
+            }
+        }
+
+        function resetMemoryGame() {
+            initMemoryGame();
+        }
+
+        /* -------------------------------------------
+           GAME 2: SPEED MATH DRILL LOGIC
+           ------------------------------------------- */
+        let mathTimer = 30;
+        let mathTimerInterval = null;
+        let mathScore = 0;
+        let mathStreak = 0;
+        let currentMathAns = 0;
+
+        function startMathDrill() {
+            clearInterval(mathTimerInterval);
+            mathTimer = 30;
+            mathScore = 0;
+            mathStreak = 0;
+            document.getElementById('mathTimer').innerText = mathTimer + 's';
+            document.getElementById('mathScore').innerText = mathScore;
+            document.getElementById('mathStreak').innerText = mathStreak;
+
+            generateMathEquation();
+
+            mathTimerInterval = setInterval(() => {
+                mathTimer--;
+                document.getElementById('mathTimer').innerText = mathTimer + 's';
+                if (mathTimer <= 0) {
+                    clearInterval(mathTimerInterval);
+                    alert(`⏱️ Time's Up! You scored ${mathScore} in the Speed Math Drill! (+${mathScore * 10} XP)`);
+                }
+            }, 1000);
+        }
+
+        function generateMathEquation() {
+            const ops = ['+', '-', '×'];
+            const op = ops[Math.floor(Math.random() * ops.length)];
+            let n1 = Math.floor(Math.random() * 20) + 2;
+            let n2 = Math.floor(Math.random() * 15) + 2;
+
+            if (op === '+') {
+                currentMathAns = n1 + n2;
+            } else if (op === '-') {
+                if (n1 < n2) [n1, n2] = [n2, n1];
+                currentMathAns = n1 - n2;
+            } else {
+                n1 = Math.floor(Math.random() * 12) + 2;
+                n2 = Math.floor(Math.random() * 9) + 2;
+                currentMathAns = n1 * n2;
+            }
+
+            document.getElementById('mathEquation').innerText = `${n1} ${op} ${n2} = ?`;
+
+            // Generate 4 distinct options
+            let options = new Set([currentMathAns]);
+            while (options.size < 4) {
+                let offset = (Math.floor(Math.random() * 6) + 1) * (Math.random() < 0.5 ? 1 : -1);
+                let wrong = currentMathAns + offset;
+                if (wrong >= 0) options.add(wrong);
+            }
+
+            const shuffledOptions = Array.from(options).sort(() => Math.random() - 0.5);
+            const container = document.getElementById('mathOptions');
+            container.innerHTML = '';
+
+            shuffledOptions.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'math-option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => selectMathAnswer(opt, btn);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectMathAnswer(selected, btn) {
+            if (mathTimer <= 0) return;
+
+            if (selected === currentMathAns) {
+                btn.classList.add('correct');
+                mathScore += 10;
+                mathStreak++;
+                document.getElementById('mathScore').innerText = mathScore;
+                document.getElementById('mathStreak').innerText = mathStreak;
+
+                setTimeout(generateMathEquation, 250);
+            } else {
+                btn.classList.add('wrong');
+                mathStreak = 0;
+                document.getElementById('mathStreak').innerText = mathStreak;
+            }
+        }
+
+        // Initialize Memory Matrix on load
+        initMemoryGame();
+    </script>
+</body>
+
+</html>

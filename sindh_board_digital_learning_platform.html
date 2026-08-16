@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sindh Board Digital Learning Platform - 9th & 10th</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+                rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <style>
+                * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                        font-family: 'Poppins', sans-serif;
+                }
+
+                :root {
+                        --primary-color: #00664f;
+                        /* Sindh Board Brand Green */
+                        --primary-dark: #004d3b;
+                        --primary-light: #e6f4f0;
+                        --accent-glow: #10b981;
+                        /* Uiverse Emerald Glow */
+                        --secondary-color: #f59e0b;
+                        --text-dark: #1e293b;
+                        --text-muted: #64748b;
+                        --bg-light: #f8fafc;
+                        --white: #ffffff;
+                }
+
+                html {
+                        scroll-behavior: smooth;
+                }
+
+                body {
+                        background-color: var(--bg-light);
+                        color: var(--text-dark);
+                        line-height: 1.6;
+                        overflow-x: hidden;
+                }
+
+                a {
+                        text-decoration: none;
+                        color: inherit;
+                }
+
+                .container {
+                        width: 90%;
+                        max-width: 1200px;
+                        margin: auto;
+                }
+
+                /* =========================================
+           2. Navigation Bar
+           ========================================= */
+                .navbar {
+                        background: rgba(255, 255, 255, 0.92);
+                        backdrop-filter: blur(12px);
+                        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+                        position: sticky;
+                        top: 0;
+                        z-index: 100;
+                        transition: all 0.3s ease;
+                }
+
+                .navbar .container {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 14px 0;
+                }
+
+                .logo {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        font-size: 22px;
+                        font-weight: 700;
+                        color: var(--primary-color);
+                }
+
+                .logo i {
+                        font-size: 26px;
+                        animation: pulse-icon 2.5s infinite ease-in-out;
+                }
+
+                @keyframes pulse-icon {
+
+                        0%,
+                        100% {
+                                transform: scale(1);
+                        }
+
+                        50% {
+                                transform: scale(1.15) rotate(-5deg);
+                                color: var(--accent-glow);
+                        }
+                }
+
+                .nav-links {
+                        display: flex;
+                        list-style: none;
+                        gap: 25px;
+                }
+
+                .nav-links a {
+                        color: var(--text-dark);
+                        font-weight: 500;
+                        font-size: 15px;
+                        position: relative;
+                        padding: 5px 0;
+                        transition: color 0.3s ease;
+                }
+
+                /* Uiverse Style Animated Underline */
+                .nav-links a::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 0%;
+                        height: 2px;
+                        background: var(--primary-color);
+                        transition: width 0.3s ease;
+                        border-radius: 2px;
+                }
+
+                .nav-links a:hover::after {
+                        width: 100%;
+                }
+
+                .nav-links a:hover {
+                        color: var(--primary-color);
+                }
+
+                /* =========================================
+           3. UIverse.io Styled Buttons
+           ========================================= */
+                /* Uiverse Shiny Shimmer Button */
+                .uiverse-btn-shine {
+                        position: relative;
+                        padding: 12px 28px;
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: #ffffff;
+                        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+                        border: none;
+                        border-radius: 30px;
+                        cursor: pointer;
+                        overflow: hidden;
+                        box-shadow: 0 4px 15px rgba(0, 102, 79, 0.3);
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                }
+
+                .uiverse-btn-shine::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: -100%;
+                        width: 60%;
+                        height: 100%;
+                        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+                        transform: skewX(-25deg);
+                        transition: all 0.75s;
+                }
+
+                .uiverse-btn-shine:hover::before {
+                        left: 150%;
+                }
+
+                .uiverse-btn-shine:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 8px 25px rgba(0, 102, 79, 0.45);
+                }
+
+                .uiverse-btn-shine:active {
+                        transform: translateY(1px);
+                }
+
+                /* Uiverse Glowing Outline Button */
+                .uiverse-btn-outline {
+                        position: relative;
+                        padding: 11px 24px;
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: var(--primary-color);
+                        background: transparent;
+                        border: 2px solid var(--primary-color);
+                        border-radius: 30px;
+                        cursor: pointer;
+                        overflow: hidden;
+                        transition: all 0.3s ease;
+                        z-index: 1;
+                }
+
+                .uiverse-btn-outline::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0;
+                        height: 100%;
+                        background: var(--primary-color);
+                        transition: width 0.3s ease;
+                        z-index: -1;
+                }
+
+                .uiverse-btn-outline:hover {
+                        color: var(--white);
+                        box-shadow: 0 5px 15px rgba(0, 102, 79, 0.25);
+                        transform: translateY(-2px);
+                }
+
+                .uiverse-btn-outline:hover::before {
+                        width: 100%;
+                }
+
+                /* =========================================
+           4. Hero Section & Uiverse Floating Elements
+           ========================================= */
+                .hero {
+                        position: relative;
+                        padding: 85px 0 95px 0;
+                        background: linear-gradient(135deg, #ffffff 0%, #edf7f4 100%);
+                        overflow: hidden;
+                }
+
+                /* Uiverse Glowing Background Floating Blur Orbs */
+                .hero-blob-1 {
+                        position: absolute;
+                        top: -50px;
+                        right: 5%;
+                        width: 380px;
+                        height: 380px;
+                        background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
+                        border-radius: 50%;
+                        filter: blur(40px);
+                        animation: uiverse-blob-float 8s infinite alternate ease-in-out;
+                        pointer-events: none;
+                }
+
+                .hero-blob-2 {
+                        position: absolute;
+                        bottom: -60px;
+                        left: 5%;
+                        width: 320px;
+                        height: 320px;
+                        background: radial-gradient(circle, rgba(0, 102, 79, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+                        border-radius: 50%;
+                        filter: blur(40px);
+                        animation: uiverse-blob-float 10s infinite alternate-reverse ease-in-out;
+                        pointer-events: none;
+                }
+
+                @keyframes uiverse-blob-float {
+                        0% {
+                                transform: translate(0, 0) scale(1);
+                        }
+
+                        100% {
+                                transform: translate(40px, 30px) scale(1.15);
+                        }
+                }
+
+                .hero-content {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 40px;
+                        position: relative;
+                        z-index: 2;
+                }
+
+                .hero-text {
+                        flex: 1.2;
+                }
+
+                /* Uiverse Glowing Badge with Pulse Dot */
+                .uiverse-badge {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        background-color: var(--primary-light);
+                        color: var(--primary-color);
+                        padding: 6px 16px;
+                        border-radius: 30px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        margin-bottom: 20px;
+                        border: 1px solid rgba(0, 102, 79, 0.2);
+                        box-shadow: 0 2px 10px rgba(0, 102, 79, 0.08);
+                }
+
+                .pulse-dot {
+                        width: 8px;
+                        height: 8px;
+                        background-color: #10b981;
+                        border-radius: 50%;
+                        position: relative;
+                }
+
+                .pulse-dot::after {
+                        content: '';
+                        position: absolute;
+                        top: -4px;
+                        left: -4px;
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        background-color: #10b981;
+                        opacity: 0.6;
+                        animation: uiverse-pulse-ring 1.8s infinite;
+                }
+
+                @keyframes uiverse-pulse-ring {
+                        0% {
+                                transform: scale(0.5);
+                                opacity: 0.8;
+                        }
+
+                        100% {
+                                transform: scale(2.2);
+                                opacity: 0;
+                        }
+                }
+
+                .hero-text h1 {
+                        font-size: 42px;
+                        line-height: 1.25;
+                        color: var(--text-dark);
+                        margin-bottom: 18px;
+                        font-weight: 800;
+                }
+
+                .hero-text h1 span {
+                        background: linear-gradient(135deg, var(--primary-color), #10b981);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                }
+
+                .hero-text p {
+                        font-size: 16px;
+                        color: var(--text-muted);
+                        margin-bottom: 30px;
+                        max-width: 540px;
+                }
+
+                .hero-buttons {
+                        display: flex;
+                        gap: 15px;
+                        align-items: center;
+                }
+
+                .hero-image {
+                        flex: 0.9;
+                        display: flex;
+                        justify-content: center;
+                        position: relative;
+                }
+
+                /* =========================================
+           5. UIverse.io Floating 3D Glassmorphism Card
+           ========================================= */
+                .uiverse-floating-card {
+                        background: rgba(255, 255, 255, 0.88);
+                        backdrop-filter: blur(16px);
+                        border: 2px solid rgba(255, 255, 255, 0.9);
+                        border-radius: 24px;
+                        padding: 30px 25px;
+                        width: 320px;
+                        box-shadow: 0 20px 40px rgba(0, 102, 79, 0.12),
+                                0 1px 3px rgba(0, 0, 0, 0.05);
+                        text-align: center;
+                        position: relative;
+                        animation: uiverse-float 4s ease-in-out infinite;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+
+                .uiverse-floating-card:hover {
+                        animation-play-state: paused;
+                        transform: translateY(-8px) scale(1.02);
+                        box-shadow: 0 25px 50px rgba(0, 102, 79, 0.2);
+                }
+
+                @keyframes uiverse-float {
+                        0% {
+                                transform: translateY(0px);
+                        }
+
+                        50% {
+                                transform: translateY(-12px);
+                        }
+
+                        100% {
+                                transform: translateY(0px);
+                        }
+                }
+
+                .uiverse-card-icon {
+                        width: 75px;
+                        height: 75px;
+                        background: linear-gradient(135deg, var(--primary-color) 0%, #10b981 100%);
+                        color: var(--white);
+                        border-radius: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 34px;
+                        margin: 0 auto 16px;
+                        box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+                        animation: icon-float 3s ease-in-out infinite;
+                }
+
+                @keyframes icon-float {
+
+                        0%,
+                        100% {
+                                transform: rotate(0deg);
+                        }
+
+                        50% {
+                                transform: rotate(5deg) scale(1.05);
+                        }
+                }
+
+                .uiverse-floating-card h3 {
+                        color: var(--text-dark);
+                        font-size: 20px;
+                        font-weight: 700;
+                        margin-bottom: 4px;
+                }
+
+                .uiverse-floating-card span {
+                        color: var(--primary-color);
+                        font-weight: 600;
+                        font-size: 13px;
+                }
+
+                .app-stats {
+                        display: flex;
+                        justify-content: space-around;
+                        margin-top: 22px;
+                        padding-top: 18px;
+                        border-top: 1px solid #e2e8f0;
+                }
+
+                .stat-item h4 {
+                        color: var(--primary-color);
+                        font-size: 20px;
+                        font-weight: 700;
+                }
+
+                .stat-item p {
+                        font-size: 12px;
+                        color: var(--text-muted);
+                        font-weight: 500;
+                }
+
+                /* =========================================
+           6. Features Section & Uiverse Glowing Cards
+           ========================================= */
+                .features {
+                        padding: 85px 0;
+                        background-color: var(--white);
+                        position: relative;
+                }
+
+                .section-header {
+                        text-align: center;
+                        margin-bottom: 55px;
+                }
+
+                .section-header h2 {
+                        font-size: 34px;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 10px;
+                }
+
+                .section-header p {
+                        color: var(--text-muted);
+                        font-size: 16px;
+                }
+
+                .features-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                        gap: 28px;
+                }
+
+                /* Uiverse Glowing Gradient Border Feature Card */
+                .uiverse-feature-card {
+                        background-color: #ffffff;
+                        padding: 35px 28px;
+                        border-radius: 18px;
+                        border: 1px solid #e2e8f0;
+                        position: relative;
+                        overflow: hidden;
+                        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+                        z-index: 1;
+                }
+
+                /* Animated Glowing Top Bar */
+                .uiverse-feature-card::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 4px;
+                        background: linear-gradient(90deg, var(--primary-color), var(--accent-glow));
+                        transform: scaleX(0);
+                        transform-origin: left;
+                        transition: transform 0.4s ease;
+                }
+
+                .uiverse-feature-card:hover {
+                        transform: translateY(-8px);
+                        border-color: rgba(16, 185, 129, 0.4);
+                        box-shadow: 0 15px 30px rgba(0, 102, 79, 0.12);
+                }
+
+                .uiverse-feature-card:hover::before {
+                        transform: scaleX(1);
+                }
+
+                .feature-icon-box {
+                        width: 60px;
+                        height: 60px;
+                        background-color: var(--primary-light);
+                        color: var(--primary-color);
+                        border-radius: 14px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 26px;
+                        margin-bottom: 22px;
+                        transition: all 0.3s ease;
+                }
+
+                .uiverse-feature-card:hover .feature-icon-box {
+                        background-color: var(--primary-color);
+                        color: var(--white);
+                        transform: scale(1.1) rotate(5deg);
+                        box-shadow: 0 8px 18px rgba(0, 102, 79, 0.25);
+                }
+
+                .uiverse-feature-card h3 {
+                        font-size: 20px;
+                        color: var(--text-dark);
+                        font-weight: 700;
+                        margin-bottom: 12px;
+                }
+
+                .uiverse-feature-card p {
+                        font-size: 14px;
+                        color: var(--text-muted);
+                        line-height: 1.6;
+                }
+
+                /* =========================================
+           7. Uiverse Animated CTA Banner
+           ========================================= */
+                .cta-section {
+                        padding: 70px 0;
+                        background-color: var(--bg-light);
+                }
+
+                .uiverse-cta-box {
+                        background: linear-gradient(135deg, #00523f 0%, #00775c 50%, #064e3b 100%);
+                        background-size: 200% 200%;
+                        animation: uiverse-gradient-shift 6s ease infinite;
+                        color: var(--white);
+                        padding: 45px 50px;
+                        border-radius: 24px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        position: relative;
+                        overflow: hidden;
+                        box-shadow: 0 15px 35px rgba(0, 82, 63, 0.25);
+                }
+
+                @keyframes uiverse-gradient-shift {
+                        0% {
+                                background-position: 0% 50%;
+                        }
+
+                        50% {
+                                background-position: 100% 50%;
+                        }
+
+                        100% {
+                                background-position: 0% 50%;
+                        }
+                }
+
+                .uiverse-cta-box::after {
+                        content: '';
+                        position: absolute;
+                        width: 300px;
+                        height: 300px;
+                        background: rgba(255, 255, 255, 0.08);
+                        border-radius: 50%;
+                        top: -100px;
+                        right: -50px;
+                        pointer-events: none;
+                }
+
+                .cta-text h2 {
+                        font-size: 30px;
+                        font-weight: 700;
+                        margin-bottom: 8px;
+                }
+
+                .cta-text p {
+                        color: #d1fae5;
+                        font-size: 15px;
+                        max-width: 550px;
+                }
+
+                .btn-uiverse-white {
+                        background-color: var(--white);
+                        color: var(--primary-color);
+                        padding: 14px 30px;
+                        border-radius: 30px;
+                        font-size: 16px;
+                        font-weight: 700;
+                        border: none;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 10px;
+                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                        transition: all 0.3s ease;
+                        white-space: nowrap;
+                        position: relative;
+                        z-index: 2;
+                }
+
+                .btn-uiverse-white:hover {
+                        background-color: #f0fdf4;
+                        transform: translateY(-3px) scale(1.03);
+                        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+                        color: var(--primary-dark);
+                }
+
+                /* =========================================
+           8. Footer
+           ========================================= */
+                .footer {
+                        background-color: #0f172a;
+                        color: #94a3b8;
+                        padding: 50px 0 25px 0;
+                }
+
+                .footer-content {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        gap: 25px;
+                        padding-bottom: 30px;
+                        border-bottom: 1px solid #1e293b;
+                }
+
+                .footer-logo {
+                        font-size: 22px;
+                        font-weight: 700;
+                        color: var(--white);
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                }
+
+                .footer-links {
+                        display: flex;
+                        list-style: none;
+                        gap: 25px;
+                        flex-wrap: wrap;
+                }
+
+                .footer-links a {
+                        color: #94a3b8;
+                        font-size: 14px;
+                        transition: all 0.3s ease;
+                }
+
+                .footer-links a:hover {
+                        color: #10b981;
+                        transform: translateX(3px);
+                }
+
+                .footer-bottom {
+                        text-align: center;
+                        padding-top: 25px;
+                        font-size: 13px;
+                        color: #64748b;
+                }
+
+                /* =========================================
+           9. Mobile Responsive Media Queries
+           ========================================= */
+                @media (max-width: 768px) {
+                        .nav-links {
+                                display: none;
+                        }
+
+                        .hero {
+                                padding: 50px 0;
+                        }
+
+                        .hero-content {
+                                flex-direction: column;
+                                text-align: center;
+                        }
+
+                        .hero-text h1 {
+                                font-size: 32px;
+                        }
+
+                        .hero-buttons {
+                                justify-content: center;
+                        }
+
+                        .uiverse-cta-box {
+                                flex-direction: column;
+                                text-align: center;
+                                gap: 25px;
+                                padding: 35px 25px;
+                        }
+
+                        .footer-content {
+                                flex-direction: column;
+                                text-align: center;
+                        }
+                }
+        </style>
+</head>
+
+<body>
+
+        <!-- 1. NAVIGATION BAR -->
+        <header class="navbar">
+                <div class="container">
+                        <a href="sindh_board_digital_learning_platform.html" class="logo">
+                                <i class="fa-solid fa-graduation-cap" style="color: #00664f;"></i>
+                                <span>Sindh Board Digital</span>
+                        </a>
+
+                        <ul class="nav-links">
+                                <li><a href="sindh_board_digital_learning_platform.html">Home</a></li>
+                                <li><a href="features.html">Features</a></li>
+                                <li><a href="notes.html">Notes</a></li>
+                                <li><a href="quizzes.html">Quizzes</a></li>
+                                <li><a href="past_papers.html">Past Papers</a></li>
+                                <li><a href="brain_gym.html">Brain Gym</a></li>
+                        </ul>
+
+                        <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk" class="uiverse-btn-shine" download>
+                                <i class="fa-solid fa-download"></i> Download App
+                        </a>
+                </div>
+        </header>
+
+        <!-- 2. HERO SECTION WITH UIVERSE ANIMATIONS -->
+        <section class="hero">
+                <!-- Floating Ambient Glow Orbs -->
+                <div class="hero-blob-1"></div>
+                <div class="hero-blob-2"></div>
+
+                <div class="container">
+                        <div class="hero-content">
+                                <!-- Left Side: Hero Text -->
+                                <div class="hero-text">
+                                        <!-- Uiverse Badge with Live Pulse Dot -->
+                                        <div class="uiverse-badge">
+                                                <span class="pulse-dot"></span>
+                                                <span>Official Learning Platform</span>
+                                        </div>
+
+                                        <h1>Empowering Sindh's Future Through <span>Digital Learning</span></h1>
+
+                                        <p>
+                                                Access comprehensive chapter-wise notes, interactive quizzes, and 10+
+                                                years solved past papers tailored specifically for Sindh Board Matric
+                                                (9th & 10th) students.
+                                        </p>
+
+                                        <!-- Uiverse Buttons -->
+                                        <div class="hero-buttons">
+                                                <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk" class="uiverse-btn-shine" download>
+                                                        <i class="fa-brands fa-android"></i> Download APK
+                                                </a>
+                                                <a href="features.html" class="uiverse-btn-outline"
+                                                        style="text-decoration: none;">
+                                                        Learn More
+                                                </a>
+                                        </div>
+                                </div>
+
+                                <!-- Right Side: Uiverse Floating 3D Glassmorphism Card -->
+                                <div class="hero-image">
+                                        <div class="uiverse-floating-card">
+                                                <div class="uiverse-card-icon">
+                                                        <i class="fa-solid fa-book-open-reader"></i>
+                                                </div>
+                                                <h3>Sindh Board App</h3>
+                                                <span>Class 9th & 10th Preparation</span>
+                                                <div class="app-stats">
+                                                        <div class="stat-item">
+                                                                <h4>100%</h4>
+                                                                <p>Free Notes</p>
+                                                        </div>
+                                                        <div class="stat-item">
+                                                                <h4>10+ Yrs</h4>
+                                                                <p>Past Papers</p>
+                                                        </div>
+                                                        <div class="stat-item">
+                                                                <h4>MCQs</h4>
+                                                                <p>Quiz Tests</p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </section>
+
+        <!-- 3. FEATURES SECTION WITH UIVERSE GLOWING CARDS -->
+        <section class="features" id="features">
+                <div class="container">
+                        <div class="section-header">
+                                <h2>Everything You Need To Excel</h2>
+                                <p>Designed strictly according to the latest Sindh Textbook Board curriculum</p>
+                        </div>
+
+                        <div class="features-grid">
+                                <!-- Card 1 -->
+                                <a href="notes.html" class="uiverse-feature-card" id="notes"
+                                        style="text-decoration: none;">
+                                        <div class="feature-icon-box">
+                                                <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/icon_subjects/ic_physics.png" alt="Notes"
+                                                        style="width: 32px; height: 32px; object-fit: contain;">
+                                        </div>
+                                        <h3>Chapter-wise Notes</h3>
+                                        <p>Comprehensive study material with solved numericals and exercises for 9th &
+                                                10th science/general subjects.</p>
+                                        <span
+                                                style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary-color); font-size: 13px; margin-top: 15px;">
+                                                Explore Notes <i class="fa-solid fa-arrow-right"></i>
+                                        </span>
+                                </a>
+
+                                <!-- Card 2 -->
+                                <a href="quizzes.html" class="uiverse-feature-card" id="quizzes"
+                                        style="text-decoration: none;">
+                                        <div class="feature-icon-box">
+                                                <i class="fa-solid fa-list-check"></i>
+                                        </div>
+                                        <h3>Interactive Quizzes</h3>
+                                        <p>Test your preparation with board-pattern timed MCQs, instant scoring, and
+                                                step-by-step solutions.</p>
+                                        <span
+                                                style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary-color); font-size: 13px; margin-top: 15px;">
+                                                Start Quiz <i class="fa-solid fa-arrow-right"></i>
+                                        </span>
+                                </a>
+
+                                <!-- Card 3 -->
+                                <a href="past_papers.html" class="uiverse-feature-card" id="past-papers"
+                                        style="text-decoration: none;">
+                                        <div class="feature-icon-box">
+                                                <i class="fa-solid fa-file-pen"></i>
+                                        </div>
+                                        <h3>Past Papers Repository</h3>
+                                        <p>Access 10+ years of solved past papers for Karachi, Hyderabad, Sukkur,
+                                                Larkana & Mirpurkhas boards.</p>
+                                        <span
+                                                style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary-color); font-size: 13px; margin-top: 15px;">
+                                                View Past Papers <i class="fa-solid fa-arrow-right"></i>
+                                        </span>
+                                </a>
+
+                                <!-- Card 4 -->
+                                <a href="brain_gym.html" class="uiverse-feature-card" id="brain-gym"
+                                        style="text-decoration: none;">
+                                        <div class="feature-icon-box">
+                                                <img src="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Brain%20Gym%20achievements/ic_ach_brain_1.png" alt="Brain Gym"
+                                                        style="width: 32px; height: 32px; object-fit: contain;">
+                                        </div>
+                                        <h3>Brain Gym</h3>
+                                        <p>Gamified cognitive exercises, memory match drills, and daily study streaks to
+                                                sharpen your mind.</p>
+                                        <span
+                                                style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary-color); font-size: 13px; margin-top: 15px;">
+                                                Play Brain Drills <i class="fa-solid fa-arrow-right"></i>
+                                        </span>
+                                </a>
+                        </div>
+                </div>
+        </section>
+
+        <!-- 4. UIVERSE GRADIENT SHIFT CTA BANNER -->
+        <section class="cta-section">
+                <div class="container">
+                        <div class="uiverse-cta-box">
+                                <div class="cta-text">
+                                        <h2>Ready to start your exam preparation?</h2>
+                                        <p>Download the official Android APK and study anytime, anywhere without
+                                                carrying heavy books.</p>
+                                </div>
+                                <a href="https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk" class="btn-uiverse-white" download>
+                                        <i class="fa-brands fa-android"></i> Download APK
+                                </a>
+                        </div>
+                </div>
+        </section>
+
+        <!-- 5. FOOTER -->
+        <footer class="footer">
+                <div class="container">
+                        <div class="footer-content">
+                                <div class="footer-logo">
+                                        <i class="fa-solid fa-graduation-cap" style="color: #10b981;"></i>
+                                        <span>Sindh Board Digital</span>
+                                </div>
+                                <ul class="footer-links">
+                                        <li><a href="#">Privacy Policy</a></li>
+                                        <li><a href="#">Terms of Service</a></li>
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">About Sindh Board</a></li>
+                                        <li><a href="#">Sitemap</a></li>
+                                </ul>
+                        </div>
+                        <div class="footer-bottom">
+                                &copy; 2026 Sindh Board Digital Learning Platform. All rights reserved.
+                        </div>
+                </div>
+        </footer>
+
+        <!-- JAVASCRIPT -->
+        <script>
+                // Function for Download Button click
+                function downloadApp() {
+                        window.location.href = "https://obrvqhgulesdbshjyzpj.supabase.co/storage/v1/object/public/Download_Apk/Sindh%20Board%20Digital%20Learning%20For%20Class%209%20&10.apk";
+                }
+
+                // Smooth Scroll to Features
+                function scrollToFeatures() {
+                        document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+                }
+        </script>
+</body>
+
+</html>
